@@ -1,0 +1,3 @@
+[submodule "food-app"]
+	path = food-app
+	url = https://github.com/AlbertoPavarin/food-app.git
