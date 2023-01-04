@@ -19,6 +19,7 @@ include_once dirname(__FILE__) . '/functions/login.php';
 <html>
     <head>
         <title>Login</title>
+        <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body>
         <form class="col-4 offset-4" action="" method="post">
