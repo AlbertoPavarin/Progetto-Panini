@@ -2,7 +2,8 @@
 
 function login($data)
     {
-        $url = 'http://localhost:8080/food-api/API/user/login.php';
+        //$url = 'http://localhost:8080/food-api/API/user/login.php';
+        $url = 'http://localhost/progetti_PHP/food-api/API/user/login.php';
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url); // setta l'url
         curl_setopt($curl, CURLOPT_POST, true); // specifica che è una post request

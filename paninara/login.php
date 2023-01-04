@@ -21,7 +21,7 @@ include_once dirname(__FILE__) . '/functions/login.php';
         <title>Login</title>
     </head>
     <body>
-        <form action="" method="post">
+        <form class="col-4 offset-4" action="" method="post">
             <label for="email">email</label><br>
             <input type="email" name="email" id=""><br><br>
             <label for="password">Password</label><br>
