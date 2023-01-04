@@ -1,3 +1,6 @@
 [submodule "food-app"]
 	path = food-app
 	url = https://github.com/AlbertoPavarin/food-app.git
+[submodule "food-api"]
+	path = food-api
+	url = https://github.com/AlbertoPavarin/food-api.git
