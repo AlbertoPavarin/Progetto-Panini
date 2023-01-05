@@ -11,6 +11,7 @@ session_start();
 $user = checkLogin();
 
 $order_id=0;
+$id = $_GET['ORDER_ID'];
 //error_reporting(0);
 //var_dump($order_arr_active);
 ?>
@@ -81,7 +82,7 @@ $order_id=0;
                         </div>
                     <?php
                     $price=0;
-                    $id = $_GET['ORDER_ID'];
+                    
                     $ord_prod_arr=getOrderProduct($id);
                     if(is_array($ord_prod_arr)){
                         foreach($ord_prod_arr as $record){
@@ -103,13 +104,20 @@ $order_id=0;
                         </div> 
                         <div class="row">
                             <div class="bord_top_solid">
-                                <form action="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">
+                                <form action="" method="post">
                                 <!--<form action="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">-->
-                                    <input type="submit" class="ready_btn" value="pronto"><?php setStatusOrder($id);?></input>   
+                                    <input type="submit" class="ready_btn" value="pronto"></input>   
                                 </form>
                             </div>
                         </div>   
-                        <?php }}?>                
+                        <?php 
+                        }}
+                        if ($_SERVER["REQUEST_METHOD"] == "POST")
+                        {
+                            setStatusOrder($id);
+                            header('Location: activeOrder.php?ORDER_ID=0');
+                        }
+                        ?>                
                 </div>
             </div>
       </div>
