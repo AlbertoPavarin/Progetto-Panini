@@ -9,29 +9,34 @@ session_start();
 
 $user = checkLogin();
 
-$order = getOrderProduct($_GET['ORDER_ID']);
+$c = array_count_values(array_column(getOrderProduct($_GET['ORDER_ID']), 'product'));
 
 $products = array();
 
-foreach($order as $record)
+foreach(array_keys($c) as $record)
 {
-    $product = getProduct($record["product"]);
+    $product = getProduct($record);
     array_push($products, $product);
 }
+
 
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login</title>
+        <title>Ordine</title>
         <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body>
         <div>
-            <?php 
+        <?php // magari qui fare una golosa tabella, non la ho fatta è abbastanza tardi in questo momento e inizio ad avere sonno
                 foreach($products as $product)
                 {
-                    echo $product[0]["name"] . "<br>";
+                    echo "Id Prodotto: ".$product["id"] . "<br>";
+                    echo "Nome prodotto: " . $product["name"] . "<br>";
+                    echo "Descrizione prodotto: " . $product["description"] . "<br>";
+                    echo "Prodotto in magazzino: " . $product["quantity"] . "<br>";
+                    echo "Prodotto nell'ordine:" . $c[$product['id']] . "<br><br>";
                 }
             ?>
         </div>

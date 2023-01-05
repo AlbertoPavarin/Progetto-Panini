@@ -129,3 +129,8 @@
     color: red;
     font-size: 10px;
   }
+
+  .error-login {
+    color: red;
+    font-size: 12px;
+  }

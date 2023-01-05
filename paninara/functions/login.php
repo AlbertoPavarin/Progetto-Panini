@@ -30,6 +30,10 @@ function login($data)
             $_SESSION['user_id'] = $response->userID;
             header('Location: index.php');
         }
+        else
+        {
+            return -1;
+        }
     }
 
 ?>

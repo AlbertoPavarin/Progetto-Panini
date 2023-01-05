@@ -5,6 +5,7 @@ session_start();
 include_once dirname(__FILE__) . '/functions/login.php';
 
 $err = "";
+$loginErr = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
@@ -13,7 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       "password" => $_POST['password'],
     ];
 
-    login($data);
+    if (login($data) == -1)
+    {
+      $loginErr = "Email o password errata";
+    }
   }
   else
   {
@@ -73,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <span class="error-msg"><?php echo $err ?></span>
         </div><br>
         <button class="login">Login</button>
+        <span class="error-login"><?php echo $loginErr ?></span>
       </form>
       <div class="footer"><span>Sign up</span><span>Forgot Password?</span></div>
     </div>
