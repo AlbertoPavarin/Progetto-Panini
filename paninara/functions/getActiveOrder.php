@@ -1,6 +1,6 @@
 <?php
-$url = 'http://localhost:8080/Progetto-Panini/food-api/API/order/getArchiveOrderStatus.php?STATUS_ID=1';
-//$url = 'http://localhost/progetti_PHP/food-api/API/order/getArchiveOrderStatus.php?STATUS_ID=1';
+//$url = 'http://localhost:8080/Progetto-Panini/food-api/API/order/getArchiveOrderStatus.php?STATUS_ID=1';
+$url = 'http://localhost/progetti_PHP/Progetto-Panini/food-api/API/order/getArchiveOrderStatus.php?STATUS_ID=1';
 
 $json_data = file_get_contents($url);
 

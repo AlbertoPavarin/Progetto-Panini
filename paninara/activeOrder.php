@@ -58,29 +58,32 @@ $order_id=0;
                     <td><?php echo $total['break']??''; ?></td>
                     <td><?php echo $total['status']??''; ?></td>
                     <td>
-                        <a href="http://localhost:8080/Progetto-Panini/paninara/singleOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
+                        <!--<a href="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/ ?>">visualizza</a>-->
+                        <a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?php echo $order_id;?>">visualizza</a>
                     </td>
                     </tr>
-
                 <?php }}?>
                 </tbody>
             </table>
-            <!--<row>
+            <row>
                 <div>
                 <?php if($_SERVER['REQUEST_METHOD'] == "GET"){
+                    if($_GET['ORDER_ID']==0){
+                        $order_id=0;
+                    }else{
                     $id = $_GET['ORDER_ID'];
                     $ord_prod_arr=getOrderProduct($id);
                     if(is_array($ord_prod_arr)){
                         foreach($ord_prod_arr as $record){
                             ?>
                             <div><?php
-                            echo $record['product']; /*
-                            $product= getProduct($record['product']);
-                            echo $product[0]->name;*/?></div>
+                            $id_product = $record['product']; 
+                            $product= getProduct($id_product);
+                            echo $product['name'];?></div>
                             <?php
-                        }}}?>                   
+                        }}}}?>                   
                 </div>
-            </row>-->
+            </row>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
