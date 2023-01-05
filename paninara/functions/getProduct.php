@@ -8,22 +8,17 @@ function getProduct($id)
 
     $decode_data = json_decode($json_data, $assoc=true);
     $product_data = $decode_data;
-    var_dump($decode_data);
+    $product=array();
     foreach ($product_data as $prod) {
       $product_record= array(
-        /*'id' => $prod["id"],
-        'name' => $prod["name"],
-        'price' => $prod["price"],
-        'description' =>$prod["description"],
-        'quantity' => $prod["quantity"],
-        'nutritional_values' => $prod["nutritional_value"],*/
-        'id' => $prod->id,
-        'name' => $prod->name,
-        'price' => $prod->price,
-        'description' =>$prod->description,
-        'quantity' => $prod->quantity,
-        'nutritional_values' => $prod->nutritional_values
-    );}
-    return $product_record;
+        'id' => $prod["ID"],
+        'name' => $prod["Nome prodotto"],
+        'price' => $prod["Prezzo"],
+        'tag' => $prod["Tag"],
+        'description' =>$prod["Descrizione"],
+    );
+  array_push($product,$product_record);
+  }
+  return $product_record;
 }
 ?>

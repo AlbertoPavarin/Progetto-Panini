@@ -17,12 +17,12 @@ $order_id=0;
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="static/css/style.css">
         <title>Ordini attivi</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <link rel="stylesheet" href="static/css/style.css">
-
     </head>
-    <body>
     <body>
         <row>
             <div class="header">        
@@ -65,25 +65,48 @@ $order_id=0;
                 <?php }}?>
                 </tbody>
             </table>
-            <row>
-                <div>
+            <div class="row table_single_ord">
+                <div class="bord_solid col-6 offset-3">
                 <?php if($_SERVER['REQUEST_METHOD'] == "GET"){
                     if($_GET['ORDER_ID']==0){
                         $order_id=0;
-                    }else{
+                    }else{?>
+                        <div class="row">
+                            <div class="bord_bottom_solid">
+                                ORDINE N° <?php echo $_GET['ORDER_ID']; ?>
+                            </div>
+                        </div>
+                    <?php
+                    $price=0;
                     $id = $_GET['ORDER_ID'];
                     $ord_prod_arr=getOrderProduct($id);
                     if(is_array($ord_prod_arr)){
                         foreach($ord_prod_arr as $record){
                             ?>
-                            <div><?php
+                            <div class="row">
+                                <div class="">
+                                <?php
                             $id_product = $record['product']; 
                             $product= getProduct($id_product);
-                            echo $product['name'];?></div>
+                            $price+=$product['price'];
+                            echo ("-");
+                            echo ($product['name']);?></div></div>
                             <?php
-                        }}}}?>                   
+                        }}}}?>
+                        <div class="row">
+                            <div class="bord_top_solid">
+                                Totale: <?php echo $price?>€
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="bord_top_solid">
+                                <form action="singleProduct.php">
+                                    <input type="submit" class="ready_btn" value="pronto"></input>   
+                                </form>
+                            </div>
+                        </div>                   
                 </div>
-            </row>
+            </div>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
