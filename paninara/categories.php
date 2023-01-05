@@ -1,13 +1,14 @@
 <?php
 include_once dirname(__FILE__) . '/functions/checkLogin.php';
 include_once dirname(__FILE__) . '/functions/getCategories.php';
+include_once dirname(__FILE__) . '/functions/getArchiveProductByTag.php';
+include_once dirname(__FILE__) . '/functions/getProduct.php';
 
 session_start();
 
 $user = checkLogin();
 
 $categories = getCategories();
-
 //var_dump($categories);
 
 ?>
@@ -32,7 +33,25 @@ $categories = getCategories();
             <?php
                 foreach($categories as $category)
                 {
-                    echo $category->name . '<br>';
+                    ?>
+                    <div class="row" style="border-style: solid; border-color:black; border-width: 1px;;">
+                        <div>
+                    <?php
+                    echo $category->name . '<br>';?>
+                    <?php
+                    $product_id = getArchiveProductByTag( $category->id);
+                    foreach($product_id as $prod_id){
+                        $product = getProduct($prod_id->product);?>
+                        <div class="row">
+                        <?php
+                        echo $product['name'] . '<br>';?>
+                        </div>
+                        <?php
+                    } ?>
+                        </div>
+                    </div>
+                    <?php
+
                 }
             ?>
         </div>
