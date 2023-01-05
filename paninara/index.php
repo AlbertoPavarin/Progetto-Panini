@@ -12,13 +12,13 @@ $user = checkLogin();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="static/css/style.css">
-        <title>Index</title>
+        <title>SANDWECH</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
     <body>
         <row>
             <div class="header">        
-                <h1>SANDWECH </h1>
+                <h1>SANDWECH</h1>
                 <h2>Hi, <?php echo $user[0]->name ?></h2>
             </div>
         </row>

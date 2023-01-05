@@ -4,14 +4,21 @@ session_start();
 
 include_once dirname(__FILE__) . '/functions/login.php';
 
+$err = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if (!empty($_POST['email']) && !empty($_POST['password'])) {
+    $data = [
+      "email" => $_POST['email'],
+      "password" => $_POST['password'],
+    ];
 
-  $data = [
-    "email" => $_POST['email'],
-    "password" => $_POST['password'],
-  ];
-
-  login($data);
+    login($data);
+  }
+  else
+  {
+    $err = "Campo richiesto";
+  }
 }
 ?>
 
@@ -54,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <ion-icon name="mail-outline"></ion-icon>
             <input type="email" name="email" placeholder="Username@gmail.com" />
           </div>
+          <span class="error-msg"><?php echo $err ?></span>
         </div><br>
         <div class="password">
           <label for="password">Password</label>
@@ -62,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input class="pas" type="password" name="password" placeholder="············" />
             <ion-icon class="show-hide" name="eye-outline"></ion-icon>
           </div>
+          <span class="error-msg"><?php echo $err ?></span>
         </div><br>
         <button class="login">Login</button>
       </form>

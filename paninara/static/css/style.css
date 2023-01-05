@@ -25,7 +25,7 @@
   }
   
   .screen-1 {
-    background: #fdd09e;
+    background: #ffd9ad;
     padding: 2em;
     display: flex;
     flex-direction: column;
@@ -123,4 +123,9 @@
   
   button {
     cursor: pointer;
+  }
+
+  .error-msg {
+    color: red;
+    font-size: 10px;
   }
