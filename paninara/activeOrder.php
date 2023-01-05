@@ -60,8 +60,8 @@ $order_id=0;
                     <td><?php echo $total['break']??''; ?></td>
                     <td><?php echo $total['status']??''; ?></td>
                     <td>
-                        <!--<a href="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/ ?>">visualizza</a>-->
-                        <a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?php echo $order_id;?>">visualizza</a>
+                        <a href="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
+                        <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->
                     </td>
                     </tr>
                 <?php }}?>
@@ -103,7 +103,8 @@ $order_id=0;
                         </div> 
                         <div class="row">
                             <div class="bord_top_solid">
-                                <form action="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">
+                                <form action="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">
+                                <!--<form action="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">-->
                                     <input type="submit" class="ready_btn" value="pronto"><?php setStatusOrder($id);?></input>   
                                 </form>
                             </div>
