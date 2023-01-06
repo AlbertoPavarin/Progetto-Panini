@@ -23,13 +23,7 @@ $categories = getCategories();
     </head>
     <body>
     <body>
-        <row>
-            <div class="header">        
-                <h1>SANDWECH</h1>
-                <h2>Hi, <?php echo $user[0]->name ?></h2>
-            </div>
-        </row>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -60,6 +54,12 @@ $categories = getCategories();
                 </div>
             </div>
         </nav>
+        <row>
+            <div class="header">        
+                <h1>SANDWECH</h1>
+                <h2>Hi, <?php echo $user[0]->name ?></h2>
+            </div>
+        </row>
         <div>
              <?php
                 foreach($categories as $category)
