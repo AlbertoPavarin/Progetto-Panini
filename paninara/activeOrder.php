@@ -16,6 +16,7 @@ $user = checkLogin();
 $order_id=0;
 $id = $_GET['ORDER_ID'];
 //error_reporting(0);
+$order_arr_active = getActiveOrder();
 //var_dump($order_arr_active);
 ?>
 
@@ -64,10 +65,15 @@ $id = $_GET['ORDER_ID'];
             <div class="header">        
                 <h1>SANDWECH </h1>
                 <h2>Hi, <?php echo $user[0]->name ?></h2>
-                <a href="index.php">home</a>
             </div>
         </row>        
         <div class="table-container col-10 offset-1">
+        <?php
+
+        if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
+            foreach ($order_arr_active as $total) {
+                $order_id = $total['id'];
+            ?>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -81,31 +87,25 @@ $id = $_GET['ORDER_ID'];
                 </tr>
             </thead>
             <tbody>
-            <?php
-
-                if(is_array($order_arr_active)!==false){      
-                    foreach($order_arr_active as $total){
-                    $order_id=$total['id'];
-                ?>
                 <tr>
-                    <td><?php echo $total['id']??''; ?></td>
-                    <td><?php echo $total['user']??''; ?></td>
-                    <td><?php echo $total['created']??''; ?></td>
-                    <td><?php echo getPickup($total['pickup'])[0]->name??''; ?></td>
-                    <td><?php echo getBreak($total['break'])[0]->time??''; ?></td>
-                    <td><?php echo getStatus($total['status'])[0]->description??''; ?></td>
+                    <td><?php echo $total['id'] ?? ''; ?></td>
+                    <td><?php echo $total['user'] ?? ''; ?></td>
+                    <td><?php echo $total['created'] ?? ''; ?></td>
+                    <td><?php echo getPickup($total['pickup'])[0]->name ?? ''; ?></td>
+                    <td><?php echo getBreak($total['break'])[0]->time ?? ''; ?></td>
+                    <td><?php echo getStatus($total['status'])[0]->description ?? ''; ?></td>
                     <td>
                         <a href="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
                         <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->
                     </td>
                 </tr>
-            <?php }}?>
+            <?php } ?>
             </tbody>
             </table>
-                <?php if($_SERVER['REQUEST_METHOD'] == "GET"){
-                    if($_GET['ORDER_ID']==0){
-                        $order_id=0;
-                    }else{?>           
+                <?php if ($_SERVER['REQUEST_METHOD'] == "GET") {
+                    if ($_GET['ORDER_ID'] == 0) {
+                        $order_id = 0;
+                    } else { ?>           
                     <div class="row table_single_ord">
                         <div class="bord_solid col-6 offset-3">
         
@@ -115,25 +115,26 @@ $id = $_GET['ORDER_ID'];
                             </div>
                         </div>
                     <?php
-                    $price=0;
-                    
-                    $ord_prod_arr=getOrderProduct($id);
-                    if(is_array($ord_prod_arr)){
-                        foreach($ord_prod_arr as $record){
+                    $price = 0;
+
+                    $ord_prod_arr = getOrderProduct($id);
+                    if (is_array($ord_prod_arr)) {
+                        foreach ($ord_prod_arr as $record) {
                             ?>
                             <div class="row">
                                 <div class="">
                                 <?php
-                            $id_product = $record['product']; 
-                            $product= getProduct($id_product);
-                            $price+=$product['price'];
-                            echo ("-");
-                            echo ($product['name']);?></div></div>
+                                $id_product = $record['product'];
+                                $product = getProduct($id_product);
+                                $price += $product['price'];
+                                echo ("-");
+                                echo ($product['name']); ?></div></div>
                             <?php
-                        }}?>
+                        }
+                    } ?>
                         <div class="row">
                             <div class="bord_top_solid">
-                                Totale: <?php echo $price?>€
+                                Totale: <?php echo $price ?>€
                             </div>
                         </div> 
                         <div class="row">
@@ -144,13 +145,18 @@ $id = $_GET['ORDER_ID'];
                                 </form>
                             </div>
                         </div>   
-                        <?php 
-                        }}
-                        if ($_SERVER["REQUEST_METHOD"] == "POST")
-                        {
-                            setStatusOrder($id);
-                            header('Location: activeOrder.php?ORDER_ID=0');
-                        }
+                        <?php
+                    }
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    setStatusOrder($id);
+                    echo '<script>location.href = "activeOrder.php?ORDER_ID=0"</script>';
+                }
+            }
+            else
+            {
+                echo '<h5 class="d-flex justify-content-center mt-5">Nessun ordine</h5>';
+            }
                         ?>                
                 </div>
             </div>
