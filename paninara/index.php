@@ -30,13 +30,13 @@ $user = checkLogin();
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link element active" aria-current="page" href="#">img</a>
+                        <a class="nav-link element active" aria-current="page" href="index.php"><img src="static/img/app_logo.png" class="img-holder" alt=""></a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link element active" aria-current="page" href="categories.php">categorie</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link element dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             ordini
                         </a>
                         <ul class="dropdown-menu">
@@ -45,6 +45,7 @@ $user = checkLogin();
                         </ul>
                         </li>
                     </ul>
+                    <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">cerca odini per id</button>

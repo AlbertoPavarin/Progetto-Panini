@@ -25,33 +25,76 @@ $categories = getCategories();
     <body>
         <row>
             <div class="header">        
-                <h1>SANDWECH </h1>
+                <h1>SANDWECH</h1>
                 <h2>Hi, <?php echo $user[0]->name ?></h2>
             </div>
         </row>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link element active" aria-current="page" href="index.php"><img src="static/img/app_logo.png" class="img-holder" alt=""></a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link element active" aria-current="page" href="categories.php">categorie</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ordini
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="activeOrder.php?ORDER_ID=0">lista attivi</a></li>
+                            <li><a class="dropdown-item" href="#">lista attivi per classe</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                    <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">cerca odini per id</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
         <div>
-            <?php
+             <?php
                 foreach($categories as $category)
                 {
                     ?>
-                    <div class="row" style="border-style: solid; border-color:black; border-width: 1px;;">
+                    <div class="row category-container">
                         <div>
-                    <?php
-                    echo $category->name . '<br>';?>
-                    <?php
-                    $product_id = getArchiveProductByTag( $category->id);
-                    foreach($product_id as $prod_id){
-                        $product = getProduct($prod_id->product);?>
-                        <div class="row">
-                        <?php
-                        echo $product['name'] . '<br>';?>
-                        </div>
-                        <?php
-                    } ?>
+                        <h3><?php echo $category->name . '<br>';?></h3>
                         </div>
                     </div>
-                    <?php
-
+            <table class="table table-striped mb-5">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Descrizione</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                    $products_id = getArchiveProductByTag($category->id);;
+                    foreach($products_id as $prod_id){
+                        $product = getProduct($prod_id->product);?>
+                        <tr>
+                            <th scope="row"><?php echo $product['id'];?></th>
+                            <td><?php echo $product['name'];?></td>
+                            <td><?php echo $product['price'];?>€</td>
+                            <td><?php echo $product['description'];?></td>
+                        </tr>
+                        <?php
+                    } ?>
+                </tbody>
+            </table>
+            <?php
                 }
             ?>
         </div>

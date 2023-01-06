@@ -34,9 +34,9 @@ $id = $_GET['ORDER_ID'];
             </div>
         </row>        
         <div class="table-container col-10 offset-1">
-            <table  class="table table-bordered">
-                <thead>
-                    <tr>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
                     <th>id</th>
                     <th>user</th>
                     <th>created</th>
@@ -44,16 +44,16 @@ $id = $_GET['ORDER_ID'];
                     <th>break</th>
                     <th>status</th>
                     <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
+                </tr>
+            </thead>
+            <tbody>
+            <?php
 
                 if(is_array($order_arr_active)!==false){      
-                foreach($order_arr_active as $total){
+                    foreach($order_arr_active as $total){
                     $order_id=$total['id'];
                 ?>
-                    <tr>
+                <tr>
                     <td><?php echo $total['id']??''; ?></td>
                     <td><?php echo $total['user']??''; ?></td>
                     <td><?php echo $total['created']??''; ?></td>
@@ -64,9 +64,9 @@ $id = $_GET['ORDER_ID'];
                         <a href="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
                         <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->
                     </td>
-                    </tr>
-                <?php }}?>
-                </tbody>
+                </tr>
+            <?php }}?>
+            </tbody>
             </table>
                 <?php if($_SERVER['REQUEST_METHOD'] == "GET"){
                     if($_GET['ORDER_ID']==0){
@@ -103,10 +103,10 @@ $id = $_GET['ORDER_ID'];
                             </div>
                         </div> 
                         <div class="row">
-                            <div class="bord_top_solid">
+                            <div class="bord_top_solid p-3">
                                 <form action="" method="post">
                                 <!--<form action="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">-->
-                                    <input type="submit" class="ready_btn" value="pronto"></input>   
+                                    <input type="submit" class="btn btn-primary btn-block col-12" value="pronto"></input>   
                                 </form>
                             </div>
                         </div>   

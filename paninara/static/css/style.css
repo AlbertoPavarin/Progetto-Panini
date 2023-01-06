@@ -36,7 +36,7 @@
   text-align:center;
   padding-left: 0px;
 }
-* {
+.login-container{
     font-family: "Poppins";
   }
   
@@ -161,4 +161,24 @@
   .error-login {
     color: red;
     font-size: 12px;
+  }
+
+  .category-container {
+    border-style: solid;
+    border-color:black; 
+    border-width: 1px;
+    margin-top: 20px;
+    padding: 5px;
+  }
+
+  .img-holder {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logout-a{
+    color: black;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 18px;
   }
