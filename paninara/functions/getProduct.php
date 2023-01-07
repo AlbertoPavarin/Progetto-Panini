@@ -15,6 +15,7 @@ function getProduct($id)
         'name' => $prod["name"],
         'price' => $prod["price"],
         'tag' => $prod["Tag"],
+        'quantity' => $prod['quantity'],
         'description' =>$prod["description"],
     );
   array_push($product,$product_record);
