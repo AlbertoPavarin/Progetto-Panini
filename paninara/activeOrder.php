@@ -7,6 +7,8 @@ include_once dirname(__FILE__) . '/functions/setStatusOrder.php';
 include_once dirname(__FILE__) . '/functions/getPickup.php';
 include_once dirname(__FILE__) . '/functions/getBreak.php';
 include_once dirname(__FILE__) . '/functions/getStatus.php';
+include_once dirname(__FILE__) . '/functions/getUser.php';
+include_once dirname(__FILE__) . '/functions/getOrder.php';
 
 
 session_start();
@@ -107,11 +109,12 @@ $order_arr_active = getActiveOrder();
                         $order_id = 0;
                     } else { ?>           
                     <div class="row table_single_ord">
-                        <div class="bord_solid col-6 offset-3">
+                        <div class="bord_solid col-10 offset-1">
         
                         <div class="row">
                             <div class="bord_bottom_solid">
-                                ORDINE N° <?php echo $_GET['ORDER_ID']; ?>
+                                ORDINE N° <?php echo $_GET['ORDER_ID']; ?><br>
+                                <p>Proprietario: <?php echo getUser(getOrder($id)[0]->user)[0]->email; ?></p>
                             </div>
                         </div>
                     <?php

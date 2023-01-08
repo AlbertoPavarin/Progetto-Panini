@@ -6,10 +6,11 @@ include_once dirname(__FILE__) . '/functions/getOrderProduct.php';
 include_once dirname(__FILE__) . '/functions/getProduct.php';
 include_once dirname(__FILE__) . '/functions/getOrder.php';
 include_once dirname(__FILE__) . '/functions/getUser.php';
+include_once dirname(__FILE__) . '/functions/setStatusOrder.php';
 
 session_start();
 
-$user = checkLogin();
+$userLogged = checkLogin();
 
 $order = getOrder($_GET['ORDER_ID']);
 
@@ -72,6 +73,12 @@ if (isset($order))
                 </div>
             </div>
         </nav>
+        <row>
+            <div class="header">        
+                <h1>SANDWECH</h1>
+                <h2>Hi, <?php echo $userLogged[0]->name ?></h2>
+            </div>
+        </row>
         <div class="table-container col-10 offset-1 mt-5">
         <?php if (isset($order)) { ?>
             <h1>N° Ordine: <?php echo $order[0]->id ?></h1>
@@ -94,14 +101,46 @@ if (isset($order))
                     <td><?php echo $c[$product['id']] ?? ''; ?></td>
                 </tr>
                 <?php
-                $price = $product["price"] * $c[$product['id']];
+                $price += $product["price"] * $c[$product['id']];
              }?>
             </tbody>
             </table>
-            <?php }
+            <p><b>Prezzo Ordine:</b> <?php echo $price?>€</p>
+            <?php
+                if ($order[0]->status == 1) {
+            ?> 
+            <div class="row">
+                <div class="bord_top_solid p-3">
+                    <form action="" method="post">
+                <!--<form action="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">-->
+                        <input type="submit" class="btn btn-primary btn-block col-12" value="pronto"></input>   
+                    </form>
+                </div>
+            </div>  
+            <?php
+                }
+                else
+                {
+                    echo "
+                    <div class='row'>
+                        <div class='bord_top_solid p-3'>
+                            <h4>Ordine già conslcuso</h4>
+                        </div>
+                    </div>";
+                }
+            ?> 
+            <?php 
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                setStatusOrder($order[0]->id);
+                echo '<script>
+                alert("Ordine Pronto");
+                location.href = "activeOrder.php?ORDER_ID=0";
+                </script>';
+            }
+        }
             else
             {
-                echo "NO RECORD";
+                echo "Nessun ordine con questo ID";
             }?>
         </div>
 

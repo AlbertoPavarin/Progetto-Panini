@@ -68,7 +68,7 @@ $categories = getCategories();
                 <div class="table-container col-10 offset-1 mt-5">
                     <div class="row category-container">
                         <div>
-                        <h3><?php echo $category->name . '<br>';?></h3>
+                        <h3><?php echo ucfirst($category->name) . '<br>';?></h3>
                         </div>
                     </div>
             <table class="table table-striped mb-5">
