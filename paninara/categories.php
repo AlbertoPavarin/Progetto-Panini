@@ -65,6 +65,7 @@ $categories = getCategories();
                 foreach($categories as $category)
                 {
                     ?>
+                <div class="table-container col-10 offset-1 mt-5">
                     <div class="row category-container">
                         <div>
                         <h3><?php echo $category->name . '<br>';?></h3>
@@ -94,6 +95,7 @@ $categories = getCategories();
                     } ?>
                 </tbody>
             </table>
+            </div>
             <?php
                 }
             ?>

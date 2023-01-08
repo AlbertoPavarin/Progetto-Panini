@@ -13,6 +13,7 @@ $user = checkLogin();
 
 $order = getOrder($_GET['ORDER_ID']);
 
+$price = 0;
 
 if (isset($order))
 {
@@ -92,7 +93,9 @@ if (isset($order))
                     <td><?php echo $product["description"] ?? ''; ?></td>
                     <td><?php echo $c[$product['id']] ?? ''; ?></td>
                 </tr>
-                <?php }?>
+                <?php
+                $price = $product["price"] * $c[$product['id']];
+             }?>
             </tbody>
             </table>
             <?php }
