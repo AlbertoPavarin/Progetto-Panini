@@ -40,8 +40,8 @@ $user = checkLogin();
                         </li>
                     </ul>
                     <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" role="search" id="searchForm" action="singleOrder.php?ORDER_ID">
+                        <input class="form-control me-2" name="ORDER_ID" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">cerca odini per id</button>
                     </form>
                 </div>
