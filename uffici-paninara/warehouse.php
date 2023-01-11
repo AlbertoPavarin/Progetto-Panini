@@ -2,7 +2,9 @@
 include_once dirname(__FILE__) . '/functions/checkLogin.php';
 include_once dirname(__FILE__) . '/functions/getArchiveProduct.php';
 include_once dirname(__FILE__) . '/functions/getProduct.php';
-
+include_once dirname(__FILE__) . '/functions/setQuantity.php';
+include_once dirname(__FILE__) . '/functions/deleteProduct.php';
+include_once dirname(__FILE__) . '/functions/reActiveProduct.php';
 
 session_start();
 
@@ -10,6 +12,8 @@ $user = checkLogin();
 $prod_id=0;
 $id=$_GET['PRODUCT_ID'];
 $prod_arr=getArchiveProduct();
+$quantity=0;
+
 //error_reporting(0);
 ?>
 
@@ -58,7 +62,14 @@ $prod_arr=getArchiveProduct();
             <h1>SANDWECH </h1>
             <h2>Hi, <?php echo $user[0]->name ?></h2>
         </div>
-    </row>        
+    </row>
+    <div class="row">
+        <div class="btn_opt">
+            <button onClick="location.href = 'newProduct.php'">
+                crea nuovo prodotto
+            </button>
+        </div>
+    </div>       
     <div class="table-container col-10 offset-1">
     <table class="table table-striped table-bordered">
         <thead>
@@ -67,6 +78,8 @@ $prod_arr=getArchiveProduct();
                     <th>nome</th>
                     <th>prezzo</th>
                     <th>tag</th>
+                    <th>quantità</th>                    
+                    <th>stato</th>
                     <th></th>
                 </tr>
             </thead>
@@ -83,8 +96,10 @@ $prod_arr=getArchiveProduct();
                     <td><?php echo $total['name'] ?? ''; ?></td>
                     <td><?php echo $total['price'] ?? ''; ?></td>
                     <td><?php echo $total['tag'] ?? ''; ?></td>
+                    <td><?php echo $total['quantity'] ?? ''; ?></td>
+                    <td><?php if($total['active']==1){echo "attivo";}else{echo "non attivo";} ?></td>
                     <td>
-                        <!--<a href="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/ ?>">visualizza</a>-->
+                        <!--<a href="http://localhost:8080/Progetto-Panini/paninara/warehouse.php?PRODUCT_ID=<?/*php echo $prod_id;*/ ?>">visualizza</a>-->
                         <a href="http://localhost/progetti_PHP/Progetto-Panini/uffici-paninara/warehouse.php?PRODUCT_ID=<?php echo $prod_id;?>">visualizza</a>
                     </td>
                 </tr>
@@ -96,7 +111,7 @@ $prod_arr=getArchiveProduct();
         <table class="product-table">
         <?php if ($_SERVER['REQUEST_METHOD'] == "GET") {
                     if ($_GET['PRODUCT_ID'] == 0) {
-                        $order_id = 0;
+                        $prod_id = 0;
                     } else { ?>
                     <div class="row table_single_ord">
                         <div class="bord_solid col-6 offset-3">
@@ -106,21 +121,67 @@ $prod_arr=getArchiveProduct();
                             </div>
                         </div>
                 <?php
-                    $prod=getProduct($id); $stat = $prod['active'] ?? '';?>
-                    <div><?php echo $prod['name'] ?? '';?></div>
-                    <div> prezzo-<?php echo $prod['price'] ?? '';?></div>
-                    <div>categoria-<?php echo $prod['tag'] ?? '';?></div>
-                    <div>quantità-<?php echo $prod['quantity'] ?? '';?></div>
-                    <div><?php if($stat==1){
-                        echo "attivo";
-                    }else{ echo "non attivo";}?></div>
-                    <?php }} ?>
+                    $prod=getProduct($id); $status = $prod['active'] ?? '';$quantity=$prod['quantity'] ?? '';$name=$prod['name'] ?? '';?>
+                    <div>nome prodotto: <?php echo $prod['name'] ?? '';?></div>
+                    <div> prezzo: <?php echo $prod['price'] ?? '';?></div>
+                    <div>categoria: <?php echo $prod['tag'] ?? '';?></div>
+                    <div>quantità: <?php echo $prod['quantity'] ?? '';?></div>
+                    <div><?php if($status==1){
+                        echo "stato: attivo";
+                    }else{ 
+                        echo "stato: non attivo";
+                    }?>
+                    </div>
+
+                <?php }} ?>
+                <?php if($id!=0){?>
+                    <div class="row">
+                        <div class="bord_top_solid p-3">
+                            <div class="row"> 
+                                <form action="" method="post">
+                                    <input class="col-8" type="text" value="inserisci quantità" name="post_quantity">
+                                    <input class="col-4" type="submit" value="aggiorna quantità">
+                                </form>
+                            </div>
+                            <?php if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['post_quantity']) && $id!=0) {
+                                $quantity=$_POST['post_quantity'];
+                                if($quantity>0){
+                                echo "<script>alert('quantità aggiornata');</script>"; 
+                                setQuantity($id,$quantity);
+                                echo"<script> window.location.href = 'warehouse.php?PRODUCT_ID=0'; </script>";
+                                }else{
+                                    echo "<script>alert('quantità non valida.Il valore inserito deve essere maggiore o uguale a zero');</script>"; 
+                                    /*echo"<script> window.location.href = 'warehouse.php?PRODUCT_ID='$id';?>'; </script>";*/
+                                    echo"<script> window.location.href = 'warehouse.php?PRODUCT_ID=0'; </script>";
+                                }
+                            }?>
+                        </div>
+                        <div class="bord_top_solid p-3">
+                            <div class="row">
+                                <form action="" method="post">
+                                    <input type="submit" name="state_prod" value="<?php if($status==1){echo "disattiva prodotto";}else{echo "riattiva prodotto";}?>">
+                                </form>
+                            </div>
+                            <?php if($_SERVER['REQUEST_METHOD'] == "POST"&&isset($_POST['state_prod'])&&$id!=0) {
+                                $state=$_POST['state_prod'];
+                                if($state=="disattiva prodotto"){
+                                    echo "<script>alert('prodotto disattivato');</script>"; 
+                                    deleteProduct($id);
+                                }else{
+                                    echo "<script>alert('prodotto attivato');</script>"; 
+                                    reActiveProduct($id);
+                                }
+                                echo"<script> window.location.href = 'warehouse.php?PRODUCT_ID=0'; </script>";
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </div>
+            <?php }?>
         </table>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>
 
-<!-- button update quantity, button attiva/disattiva prodotto, creazione nuovo prodotto, MODEL->product->setQuantity($Quantity), API->setQuantity.php, pagina offerte,
-MODEL->product->setActive($1 o 2), API->setActive.php-->
+<!--  button attiva/disattiva prodotto, creazione nuovo prodotto, pagina offerte, setPrice, setDescription-->

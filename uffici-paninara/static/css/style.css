@@ -1,11 +1,19 @@
 .nav-item{
     font-size: 20px;
-
 }
 .header{
     text-align: center;
     font-family: arial;
     font-weight: bold;
+}
+.btn_opt{
+  text-align: center;
+  font-family: arial;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+.form-container{
+  text-align: center;
 }
 .bord_solid{
   border-style: solid;

@@ -15,8 +15,8 @@ function getArchiveProduct()
         'name' => $prod["Nome prodotto"],
         'price' => $prod["Prezzo"],
         'tag' => $prod["Tag"],
-        //'quantity' => $prod['quantity'],
-        //'description' =>$prod["description"],
+        'quantity' => $prod['quantity'],
+        'active' =>$prod["active"],
     );
   array_push($product,$product_record);
   }
