@@ -11,7 +11,15 @@ include_once dirname(__FILE__) . '/functions/getClass.php';
 include_once dirname(__FILE__) . '/functions/getActiveOrderByClass.php';
 include_once dirname(__FILE__) . '/functions/getClassById.php';
 
-
+function getProductsFromOrder($orderId, &$products)
+{
+    $products_orders = getOrderProduct($orderId);
+    
+    foreach ($products_orders as $product)
+    {
+        array_push($products, getProduct($product['product']));
+    }
+}
 
 session_start();
 
@@ -20,10 +28,19 @@ $user = checkLogin();
 $order_id=0;
 $id = $_GET['CLASS_ID'];
 
-$classes = getClassById($id);
+$class = getClassById($id)[0];
 
-$classOrders = array();
-//var_dump($order_arr_active);
+$order_arr_active = getActiveOrderByClass($class->id);
+
+if (count($order_arr_active) > 0)
+{
+    $products = array();
+
+    foreach ($order_arr_active as $order)
+    {
+        getProductsFromOrder($order['id'], $products);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,10 +92,7 @@ $classOrders = array();
         </row>        
         <div class="table-container col-10 offset-1">
         <?php
-        foreach($classes as $class)
-        {
             echo "<h5 class='mt-5'>$class->year$class->section</h5>";
-            $order_arr_active = getActiveOrderByClass($class->id);
         if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
             foreach ($order_arr_active as $total) {
                 $order_id = $total['id'];
@@ -111,7 +125,6 @@ $classOrders = array();
             </table>
                 <?php
         }
-    }
                         ?>                
                 </div>
             </div>
