@@ -112,11 +112,11 @@ if (isset($order))
             <div class="row">
                 <div class="bord_top_solid p-3">
                     <form action="" method="post">
-                <!--<form action="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">-->
+                    <!--<form action="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">-->
                         <input type="submit" class="btn btn-primary btn-block col-12" value="pronto"></input>   
                     </form>
                 </div>
-            </div>  
+            </div>
             <?php
                 }
                 else

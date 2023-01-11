@@ -77,6 +77,7 @@ $classOrders = array();
         foreach($classes as $class)
         {
             echo "<h5 class='mt-5'>$class->year$class->section</h5>";
+            echo "<a href='classOrders.php?CLASS_ID=$class->id'>visualizza</a>";
             $order_arr_active = getActiveOrderByClass($class->id);
         if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
             foreach ($order_arr_active as $total) {
@@ -86,10 +87,10 @@ $classOrders = array();
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>created</th>
-                    <th>pickup</th>
-                    <th>break</th>
-                    <th>status</th>
+                    <th>creato</th>
+                    <th>ritiro</th>
+                    <th>ricreazione</th>
+                    <th>stato</th>
                     <th></th>
                 </tr>
             </thead>
@@ -101,7 +102,7 @@ $classOrders = array();
                     <td><?php echo getBreak($total['break'])[0]->time ?? ''; ?></td>
                     <td><?php echo getStatus($total['status'])[0]->description ?? ''; ?></td>
                     <td>
-                        <a href="http://localhost:8080/Progetto-Panini/paninara/singleOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
+                        <a href="singleOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
                         <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->
                     </td>
                 </tr>

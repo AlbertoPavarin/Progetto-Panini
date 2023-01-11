@@ -7,8 +7,10 @@ include_once dirname(__FILE__) . '/functions/setStatusOrder.php';
 include_once dirname(__FILE__) . '/functions/getPickup.php';
 include_once dirname(__FILE__) . '/functions/getBreak.php';
 include_once dirname(__FILE__) . '/functions/getStatus.php';
-include_once dirname(__FILE__) . '/functions/getUser.php';
-include_once dirname(__FILE__) . '/functions/getOrder.php';
+include_once dirname(__FILE__) . '/functions/getClass.php';
+include_once dirname(__FILE__) . '/functions/getActiveOrderByClass.php';
+include_once dirname(__FILE__) . '/functions/getClassById.php';
+
 
 
 session_start();
@@ -16,9 +18,11 @@ session_start();
 $user = checkLogin();
 
 $order_id=0;
-$id = $_GET['ORDER_ID'];
-//error_reporting(0);
-$order_arr_active = getActiveOrder();
+$id = $_GET['CLASS_ID'];
+
+$classes = getClassById($id);
+
+$classOrders = array();
 //var_dump($order_arr_active);
 ?>
 
@@ -71,7 +75,10 @@ $order_arr_active = getActiveOrder();
         </row>        
         <div class="table-container col-10 offset-1">
         <?php
-
+        foreach($classes as $class)
+        {
+            echo "<h5 class='mt-5'>$class->year$class->section</h5>";
+            $order_arr_active = getActiveOrderByClass($class->id);
         if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
             foreach ($order_arr_active as $total) {
                 $order_id = $total['id'];
@@ -80,7 +87,6 @@ $order_arr_active = getActiveOrder();
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>utente</th>
                     <th>creato</th>
                     <th>ritiro</th>
                     <th>ricreazione</th>
@@ -91,75 +97,21 @@ $order_arr_active = getActiveOrder();
             <tbody>
                 <tr>
                     <td><?php echo $total['id'] ?? ''; ?></td>
-                    <td><?php echo $total['user'] ?? ''; ?></td>
                     <td><?php echo $total['created'] ?? ''; ?></td>
                     <td><?php echo getPickup($total['pickup'])[0]->name ?? ''; ?></td>
                     <td><?php echo getBreak($total['break'])[0]->time ?? ''; ?></td>
                     <td><?php echo getStatus($total['status'])[0]->description ?? ''; ?></td>
                     <td>
-                        <a href="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
+                        <a href="http://localhost:8080/Progetto-Panini/paninara/singleOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
                         <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->
                     </td>
                 </tr>
             <?php } ?>
             </tbody>
             </table>
-                <?php if ($_SERVER['REQUEST_METHOD'] == "GET") {
-                    if ($_GET['ORDER_ID'] == 0) {
-                        $order_id = 0;
-                    } else { ?>           
-                    <div class="row table_single_ord">
-                        <div class="bord_solid col-10 offset-1">
-        
-                        <div class="row">
-                            <div class="bord_bottom_solid">
-                                ORDINE N° <?php echo $_GET['ORDER_ID']; ?><br>
-                                <p>Proprietario: <?php echo getUser(getOrder($id)[0]->user)[0]->email; ?></p>
-                            </div>
-                        </div>
-                    <?php
-                    $price = 0;
-
-                    $ord_prod_arr = getOrderProduct($id);
-                    if (is_array($ord_prod_arr)) {
-                        foreach ($ord_prod_arr as $record) {
-                            ?>
-                            <div class="row">
-                                <div class="">
-                                <?php
-                                $id_product = $record['product'];
-                                $product = getProduct($id_product);
-                                $price += $product['price'];
-                                echo ("-");
-                                echo ($product['name']); ?></div></div>
-                            <?php
-                        }
-                    } ?>
-                        <div class="row">
-                            <div class="bord_top_solid">
-                                Totale: <?php echo $price ?>€
-                            </div>
-                        </div> 
-                        <div class="row">
-                            <div class="bord_top_solid p-3">
-                                <form action="" method="post">
-                                <!--<form action="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">-->
-                                    <input type="submit" class="btn btn-primary btn-block col-12" value="pronto"></input>   
-                                </form>
-                            </div>
-                        </div>   
-                        <?php
-                    }
-                }
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    setStatusOrder($id);
-                    echo '<script>location.href = "activeOrder.php?ORDER_ID=0"</script>';
-                }
-            }
-            else
-            {
-                echo '<h5 class="d-flex justify-content-center mt-5">Nessun ordine</h5>';
-            }
+                <?php
+        }
+    }
                         ?>                
                 </div>
             </div>
