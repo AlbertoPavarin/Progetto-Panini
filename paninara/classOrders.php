@@ -11,13 +11,15 @@ include_once dirname(__FILE__) . '/functions/getClass.php';
 include_once dirname(__FILE__) . '/functions/getActiveOrderByClass.php';
 include_once dirname(__FILE__) . '/functions/getClassById.php';
 
-function getProductsFromOrder($orderId, &$products)
+function getProductsFromOrder($orderId, &$products, &$price)
 {
-    $products_orders = getOrderProduct($orderId);
+    $product_order = getOrderProduct($orderId);
     
-    foreach ($products_orders as $product)
+    foreach ($product_order as $record)
     {
-        array_push($products, getProduct($product['product']));
+        $product = getProduct($record['product']);
+        $price += $product['price'];
+        array_push($products, $product);
     }
 }
 
@@ -36,9 +38,11 @@ if (count($order_arr_active) > 0)
 {
     $products = array();
 
+    $price = 0;
+
     foreach ($order_arr_active as $order)
     {
-        getProductsFromOrder($order['id'], $products);
+        getProductsFromOrder($order['id'], $products, $price);
     }
 }
 ?>
@@ -123,7 +127,41 @@ if (count($order_arr_active) > 0)
             <?php } ?>
             </tbody>
             </table>
+            <div class="row table_single_ord">
+                <div class="bord_solid col-10 offset-1">
+                    <div class="row">
+                        <div class="bord_bottom_solid">
+                            <p>Proprietario: <?php echo "$class->year" . "$class->section"; ?></p>
+                        </div>
+                     </div>
+                    <?php
+                        foreach ($products as $product) {
+                            echo ("-");
+                            echo ($product['name']) . "<br>";
+                    } ?>
+                        <div class="row">
+                            <div class="bord_top_solid">
+                                Totale: <?php echo $price ?>€
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="bord_top_solid p-3">
+                                <form action="" method="post">
+                                <!--<form action="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=0">-->
+                                    <input type="submit" class="btn btn-primary btn-block col-12" value="pronto"></input>   
+                                </form>
+                            </div>
+                        </div>   
+            </div>
+
                 <?php
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    foreach ($order_arr_active as $order)
+                    {
+                        setStatusOrder($order['id']);
+                        echo '<script>location.href = "activeOrder.php?ORDER_ID=0"</script>';
+                    }
+                }
         }
                         ?>                
                 </div>
