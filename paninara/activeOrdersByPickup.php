@@ -10,6 +10,7 @@ include_once dirname(__FILE__) . '/functions/getStatus.php';
 include_once dirname(__FILE__) . '/functions/getClass.php';
 include_once dirname(__FILE__) . '/functions/getActiveOrderByClass.php';
 include_once dirname(__FILE__) . '/functions/getArchivePickup.php';
+include_once dirname(__FILE__) . '/functions/getActiveOrderByPickup.php';
 
 
 
@@ -20,6 +21,7 @@ $user = checkLogin();
 $order_id=0;
 
 $pickups = getArchivePickup();
+
 $id = $_GET['ORDER_ID'];
 
 $pickupsOrders = array();
@@ -56,6 +58,7 @@ $pickupsOrders = array();
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="activeOrder.php?ORDER_ID=0">lista attivi</a></li>
                             <li><a class="dropdown-item" href="activeOrderByClass.php?ORDER_ID=0">lista attivi per classe</a></li>
+                            <li><a class="dropdown-item" href="activeOrdersByPickup.php?ORDER_ID=0">lista attivi per punto di ritiro</a></li>
                         </ul>
                         </li>
                     </ul>
@@ -77,10 +80,8 @@ $pickupsOrders = array();
         <?php
         foreach($pickups as $pickup)
         {   
-        if (is_array($order_arr_active = getActiveOrderByClass($pickup->id))){
-            echo "<h5 class='mt-5'>$pickup->description</h5>";
-            echo "<a href='classOrders.php?CLASS_ID=$class->id'>visualizza</a>";
-        if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
+        if (is_array($order_arr_active = getActiveOrderByPickup($pickup->id))){
+            echo "<h5 class='mt-5'>$pickup->name</h5>";
             foreach ($order_arr_active as $total) {
                 $order_id = $total['id'];
             ?>
@@ -113,7 +114,6 @@ $pickupsOrders = array();
                 <?php
         }
     }
-}
                         ?>                
                 </div>
             </div>

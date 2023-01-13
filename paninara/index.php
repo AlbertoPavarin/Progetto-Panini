@@ -36,6 +36,7 @@ $user = checkLogin();
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="activeOrder.php?ORDER_ID=0">lista attivi</a></li>
                             <li><a class="dropdown-item" href="activeOrderByClass.php?ORDER_ID=0">lista attivi per classe</a></li>
+                            <li><a class="dropdown-item" href="activeOrdersByPickup.php?ORDER_ID=0">lista attivi per punto di ritiro</a></li>
                         </ul>
                         </li>
                     </ul>
