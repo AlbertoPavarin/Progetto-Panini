@@ -9,6 +9,7 @@ include_once dirname(__FILE__) . '/functions/getBreak.php';
 include_once dirname(__FILE__) . '/functions/getStatus.php';
 include_once dirname(__FILE__) . '/functions/getClass.php';
 include_once dirname(__FILE__) . '/functions/getActiveOrderByClass.php';
+include_once dirname(__FILE__) . '/functions/getArchivePickup.php';
 
 
 
@@ -17,11 +18,11 @@ session_start();
 $user = checkLogin();
 
 $order_id=0;
+
+$pickups = getArchivePickup();
 $id = $_GET['ORDER_ID'];
 
-$classes = getClass();
-
-$classOrders = array();
+$pickupsOrders = array();
 //var_dump($order_arr_active);
 ?>
 
@@ -74,10 +75,10 @@ $classOrders = array();
         </row>        
         <div class="table-container col-10 offset-1">
         <?php
-        foreach($classes as $class)
+        foreach($pickups as $pickup)
         {   
-        if (is_array($order_arr_active = getActiveOrderByClass($class->id))){
-            echo "<h5 class='mt-5'>$class->year$class->section</h5>";
+        if (is_array($order_arr_active = getActiveOrderByClass($pickup->id))){
+            echo "<h5 class='mt-5'>$pickup->description</h5>";
             echo "<a href='classOrders.php?CLASS_ID=$class->id'>visualizza</a>";
         if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
             foreach ($order_arr_active as $total) {
