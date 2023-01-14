@@ -89,6 +89,7 @@ $pickupsOrders = array();
             <thead>
                 <tr>
                     <th>id</th>
+                    <th>user</th>
                     <th>creato</th>
                     <th>ritiro</th>
                     <th>ricreazione</th>
@@ -99,6 +100,7 @@ $pickupsOrders = array();
             <tbody>
                 <tr>
                     <td><?php echo $total['id'] ?? ''; ?></td>
+                    <td><?php echo $total['user'] ?? ''; ?></td>
                     <td><?php echo $total['created'] ?? ''; ?></td>
                     <td><?php echo getPickup($total['pickup'])[0]->name ?? ''; ?></td>
                     <td><?php echo getBreak($total['break'])[0]->time ?? ''; ?></td>

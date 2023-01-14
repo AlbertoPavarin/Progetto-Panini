@@ -16,6 +16,7 @@ function getActiveOrderByPickup($id)
       $order_record = array(
         'id' => $order->id,
         'created' => $order->created,
+        'user' => $order->user,
         'pickup' => $order->pickup,
         'break' => $order->break,
         'status' => $order->status,
