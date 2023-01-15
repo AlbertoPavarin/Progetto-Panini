@@ -4,6 +4,12 @@ session_start();
 
 include_once dirname(__FILE__) . '/functions/login.php';
 
+if (count($_SESSION) > 0)
+{
+    header('Location: index.php');
+    exit();
+};
+
 $err = "";
 $loginErr = "";
 

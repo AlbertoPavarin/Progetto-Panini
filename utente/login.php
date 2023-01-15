@@ -2,12 +2,19 @@
 
 session_start();
 
-//include_once dirname(__FILE__) . '/functions/login.php';
+include_once dirname(__FILE__) . '/functions/login.php';
+include_once dirname(__FILE__) . '/functions/checkLogin.php';
+
+if (count($_SESSION) > 0)
+{
+    header('Location: index.php');
+    exit();
+};
 
 $err = "";
 $loginErr = "";
 
-/*if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $data = [
       "email" => $_POST['email'],
@@ -21,9 +28,9 @@ $loginErr = "";
   }
   else
   {
-    $err = "Campo richiesto";
+    $loginErr = "Tutti i campi richiesti";
   }
-}*/
+}
 ?>
 
 <!DOCTYPE html>
@@ -60,12 +67,12 @@ $loginErr = "";
                     <div class="quote-box d-flex justify-content-center align-items-center col-12">
                         <div class="quote">Uno non può pensare bene, amare bene, dormire bene se non ha mangiato bene.</div>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center">
+                    <div class="d-flex justify-content-center align-items-center col-12">
                         <form method="post" class="form-group login-form">
-                            <input type="email" placeholder="Email" class="form-control login-input">
+                            <input type="email" placeholder="Email" name="email" class="form-control login-input">
                             <br>
-                            <input type="password" placeholder="Password" class="form-control login-input">
-                            <br>
+                            <input type="password" placeholder="Password" name="password" class="form-control login-input">
+                            <p class="error-msg"><?php echo $loginErr ?></p>
                             <input type="submit" value="Accedi" class="login-submit-btn">
                             <div class="register-container col-12 mt-2">
                                 <a href="">Registrati ora</a>
