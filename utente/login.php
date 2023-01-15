@@ -35,33 +35,48 @@ $loginErr = "";
         <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body>
-        <div class="login-container">
-            <div class="pills-container1">
-                <div class="orange-pill"></div>
-                <div class="red-pill"></div>
-            </div>
-            <div class="d-flex justify-content-center">
-                <div id="logo-box">
-                    <img src="static/img/app_logo.png" alt="" srcset="" class="logo-img">
+        <div class="container">
+            <div class="row">
+                <div class="login-container">
+                    <div class="pills-container1">
+                        <div class="orange-pill"></div>
+                        <div class="red-pill"></div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div id="logo-box">
+                            <img src="static/img/app_logo.png" alt="" srcset="" class="logo-img">
+                        </div>
+                    </div>
+                    <div class="pills-container2">
+                        <div class="orange-pill2"></div>
+                        <div class="red-pill2"></div>
+                    </div>
+                    <div class="login-w d-flex justify-content-center align-items-center col-12">
+                        Login
+                    </div>
+                    <div class="line-box d-flex justify-content-center align-items-center col-12">
+                        <div class="line"></div>
+                    </div>
+                    <div class="quote-box d-flex justify-content-center align-items-center col-12">
+                        <div class="quote">Uno non può pensare bene, amare bene, dormire bene se non ha mangiato bene.</div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <form method="post" class="form-group login-form">
+                            <input type="email" placeholder="Email" class="form-control login-input">
+                            <br>
+                            <input type="password" placeholder="Password" class="form-control login-input">
+                            <br>
+                            <input type="submit" value="Accedi" class="login-submit-btn">
+                            <div class="register-container col-12 mt-2">
+                                <a href="">Registrati ora</a>
+                            </div>
+                            <div class="register-container col-12 mt-2">
+                                <a href="">Password dimeticata</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="pills-container2">
-                <div class="orange-pill2"></div>
-                <div class="red-pill2"></div>
-            </div>
-            <div class="login-w d-flex justify-content-center align-items-center">
-                Login
-            </div>
-            <div class="line-box d-flex justify-content-center align-items-center">
-                <div class="line"></div>
-            </div>
-            <div class="quote-box d-flex justify-content-center align-items-center">
-                <div class="quote">Uno non può pensare bene, amare bene, dormire bene se non ha mangiato bene.</div>
-            </div>
-            <form action="" class="d-flex justify-content-center align-items-center">
-                <input type="email" placeholder="Email" class="email-input">
-                <input type="password" placeholder="Password" class="password-input">
-            </form>
         </div>
     </body>
 
