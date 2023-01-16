@@ -19,48 +19,46 @@ $categories = getCategories();
         <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body>
-        <div class="container">
-            <div class="row">
+        <header class="">
+            <nav class="nav container-ns">
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list ul">
+                        <li class="nav__item pt-2">
+                            <a href="#home" class="nav__link active-link">
+                                <i class='bx bx-home-alt nav__icon'></i>
+                                <span class="nav__name">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav__item pt-2">
+                            <a href="#skills" class="nav__link">
+                                <i class='bx bx-book-alt nav__icon'></i>
+                                <span class="nav__name">Skills</span>
+                            </a>
+                        </li>
+                        <li class="nav__item pt-2">
+                            <a href="#contactme" class="nav__link">
+                                <i class='bx bx-message-square-detail nav__icon'></i>
+                                <span class="nav__name">Contactme</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <img src="assets/img/perfil.png" alt="" class="nav__img">
+            </nav>
+        </header>
+        <main>
+            <div class="">
+                <?php foreach($categories as $category)
+                { ?>
+                    <section class="container-ns section section__height mb-3" id="home">
+                        <h2 class="section__title"><?php echo ucfirst($category->name) ?></h2>
+                    </section>
                 <?php
-
-                /*foreach($categories as $category)
-                {
-                    var_dump($category);
-                }*/
-
+                }
                 ?>
             </div>
-        </div>
-        <div class="header">
-            <nav class="nav container-nav">
-                    <div class="nav__menu" id="nav-menu">
-                        <ul class="nav__list ul">
-                            <li class="nav__item pt-2">
-                                <a href="#home" class="nav__link active-link">
-                                    <i class='bx bx-home-alt nav__icon'></i>
-                                    <span class="nav__name">Home</span>
-                                </a>
-                            </li>
-
-                            <li class="nav__item pt-2">
-                                <a href="#skills" class="nav__link">
-                                    <i class='bx bx-book-alt nav__icon'></i>
-                                    <span class="nav__name">Skills</span>
-                                </a>
-                            </li>
-
-                            <li class="nav__item pt-2">
-                                <a href="#contactme" class="nav__link">
-                                    <i class='bx bx-message-square-detail nav__icon'></i>
-                                    <span class="nav__name">Contactme</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <img src="assets/img/perfil.png" alt="" class="nav__img">
-                </nav>
-        </div>
+        </main>
+        </main>
     </body>
 
 </html>
