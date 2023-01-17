@@ -63,6 +63,7 @@
 
 .login-container, body, html {
     height: 100%;
+    margin: 0;
 }
 
 #logo-box {
@@ -156,7 +157,7 @@
     border-radius: 15px;
 }
 
-.login-form{
+.login-form, .searchbar-form{
     text-align: center;
 }
 
@@ -381,14 +382,10 @@ a {
   border-radius: 25px;
 }
 
-.category-name-home{
-  position: absolute;
-  width: 138px;
+.name-home{
+  width: 100%;
   height: 27px;
-  left: 24px;
-  top: 60px;
   
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -396,4 +393,69 @@ a {
   
   color: #000000;
 
+}
+
+.searchbar{
+  height: 39px;
+  
+  background: #EEEAEA;
+  border-radius: 341px;
+}
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 30px;
+}
+
+main{
+  margin-bottom: 4rem;
+}
+
+.category-name-home{
+  width: 100%;
+  height: 24px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+}
+
+.prod-container
+{
+  height: 67px;
+  
+  background: #EEEAEA;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.prods-container, .categories-container{
+  margin-bottom: 4rem;
+}
+
+.icon-container{
+  width: 55px;
+  height: 55px;
+
+  mix-blend-mode: darken;
+  border-radius: 4px; 
+}
+
+.price-container{
+  width: 57px;
+  height: 37px;
+  text-align: center;
+  
+  color: #FFF;
+  background: #EE0F38;
+  border-radius: 15px;
+}
+
+.p-price{
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
