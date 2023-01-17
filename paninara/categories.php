@@ -79,6 +79,7 @@ $categories = getCategories();
                         <th scope="col">Nome</th>
                         <th scope="col">Prezzo</th>
                         <th scope="col">Descrizione</th>
+                        <th scope="col">Quantità</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,6 +92,7 @@ $categories = getCategories();
                             <td><?php echo $product['name'];?></td>
                             <td><?php echo $product['price'];?>€</td>
                             <td><?php echo $product['description'];?></td>
+                            <td><?php echo $product['quantity'];?></td>
                         </tr>
                         <?php
                     } ?>
