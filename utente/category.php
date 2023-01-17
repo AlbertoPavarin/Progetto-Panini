@@ -95,7 +95,7 @@ if (isset($_GET["category_id"]))
                 foreach ($products as $product)
                 {?>
                     <div class="row prod-container mb-3">
-                        <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/panini-icon.png" class="icon-container"></div>
+                        <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/<?php echo $category->name ?>-icon.png" class="icon-container"></div>
                         <div class="col-8 d-flex align-items-center"><b><?php echo $product["name"]?></b></div>
                         <div class="col-2 d-flex justify-content-center align-items-center">
                             <div class="price-container">
