@@ -204,8 +204,11 @@ a {
   }
 
 .section {
-    padding: 4.5rem 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1.5rem;
     border-radius: 20px;
+    width: 50vh;
     border: 0;
     background-color: var(--container-color);
     box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
@@ -221,7 +224,6 @@ a {
   
   .section__height {
     height: 15vh;
-    width: 50vh;
   }
   
   /*=============== LAYOUT ===============*/
@@ -349,3 +351,49 @@ a {
         }
       }
   }
+
+.home-container-pill {
+  position: absolute;
+  width: 53px;
+  height: 74px;
+  top: -21px;
+}
+
+.home-orange-pill{
+  position: absolute;
+  width: 23px;
+  height: 56px;
+  left: 5px;
+  top: -21px;
+
+  background: #FF9B18;
+  border-radius: 25px;
+}
+
+.home-red-pill{
+  position: absolute;
+  width: 23px;
+  height: 56px;
+  left: 35px;
+  top: -13px;
+
+  background: #EE0F38;
+  border-radius: 25px;
+}
+
+.category-name-home{
+  position: absolute;
+  width: 138px;
+  height: 27px;
+  left: 24px;
+  top: 60px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  
+  color: #000000;
+
+}

@@ -1,11 +1,28 @@
 <?php
 session_start();
 include_once dirname(__FILE__) . '/functions/checkLogin.php';
-include_once dirname(__FILE__) . '/functions/getCategories.php';
+include_once dirname(__FILE__) . '/functions/getArchiveProductByTag.php';
+include_once dirname(__FILE__) . '/functions/getProduct.php';
+include_once dirname(__FILE__) . '/functions/getCategory.php';
 
 $user = checkLogin();
 
-$categories = getCategories();
+if (isset($_GET["category_id"]))
+{
+    $products = array();
+
+    $category_id = $_GET["category_id"];
+
+    $category = getCategory($category_id);
+
+    $products_tag = getArchiveProductByTag($category_id);
+
+    foreach($products_tag as $product_tag)
+    {
+        $product = getProduct($product_tag->product);
+        array_push($products, $product);
+    }
+}
 
 ?>
 
@@ -46,17 +63,16 @@ $categories = getCategories();
             </nav>
         </header>
         <main>
-            <div class="">
-                <?php foreach($categories as $category)
-                { ?>
-                    <a href="category.php?category_id=<?php echo $category->id ?>">
-                        <section class="container-ns section section__height mb-3" id="home">
-                            <h2 class="section__title"><?php echo ucfirst($category->name) ?></h2>
-                        </section>
-                    </a>
-                <?php
-                }
-                ?>
+        <div class="home-container-pill">
+            <div class="home-orange-pill"></div>
+            <div class="home-red-pill"></div>
+        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+
+                    </div>
+                </div>
             </div>
         </main>
         </main>
