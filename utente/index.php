@@ -47,19 +47,20 @@ $categories = getCategories();
             </nav>
         </header>
         <main>
-            <div class="categories-container">
-                <?php foreach($categories as $category)
-                { ?>
-                    <section class="container-ns section section__height mb-3" id="home">
-                        <a href="category.php?category_id=<?php echo $category->id ?>">
-                            <h2 class="section__title"><?php echo ucfirst($category->name) ?></h2>
-                        </a>
-                    </section>
+            <div class="container pb-4">
+                <div class="prods-container">
                 <?php
-                }
-                ?>
+                foreach ($categories as $category)
+                {?>
+                    <a href="category.php?category_id=<?php echo $category->id?>">
+                        <div class="row mb-3 category-container">
+                            <div class="col-12 d-flex justify-content-center align-items-center"><b><?php echo $category->name?></b></div>
+                        </div>
+                    </a>
+                <?php }
+                    ?>
+                </div>
             </div>
-        </main>
         </main>
     </body>
 

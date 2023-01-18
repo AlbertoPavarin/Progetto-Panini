@@ -68,7 +68,7 @@ if (isset($_GET["category_id"]))
                 <div class="home-orange-pill"></div>
                 <div class="home-red-pill"></div>
             </div>
-            <div class="container">
+            <div class="container pb-4">
                 <div class="row">
                     <div class="col-12">
                         <div class="name-home">
@@ -87,19 +87,19 @@ if (isset($_GET["category_id"]))
                 </div>
                 <div class="row">
                     <div cass="col-12">
-                        <p class="category-name-home mt-5"><?php echo $category->name ?></p>
+                        <p class="category-name-home mt-5"><?php echo ucfirst($category->name) ?></p>
                     </div>
                 </div>
                 <div class="prods-container">
                 <?php
-                foreach ($products as $product)
+                foreach ([1, 2, 3, 4, 5, 6, 7, 8, 9] as $product)
                 {?>
                     <div class="row prod-container mb-3">
                         <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/<?php echo $category->name ?>-icon.png" class="icon-container"></div>
-                        <div class="col-8 d-flex align-items-center"><b><?php echo $product["name"]?></b></div>
+                        <div class="col-8 d-flex align-items-center"><b><?php echo $product?></b></div>
                         <div class="col-2 d-flex justify-content-center align-items-center">
                             <div class="price-container">
-                                <p class="p-price"><?php echo $product["price"]?>€</p>
+                                <p class="p-price"><?php echo $product?>€</p>
                             </div>
                         </div>
                     </div>
