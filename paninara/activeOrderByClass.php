@@ -91,7 +91,6 @@ $classOrders = array();
                     <th>creato</th>
                     <th>ritiro</th>
                     <th>ricreazione</th>
-                    <th>stato</th>
                     <th></th>
                 </tr>
             </thead>
@@ -101,7 +100,6 @@ $classOrders = array();
                     <td><?php echo $total['created'] ?? ''; ?></td>
                     <td><?php echo getPickup($total['pickup'])[0]->name ?? ''; ?></td>
                     <td><?php echo getBreak($total['break'])[0]->time ?? ''; ?></td>
-                    <td><?php echo getStatus($total['status'])[0]->description ?? ''; ?></td>
                     <td>
                         <a href="singleOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
                         <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->

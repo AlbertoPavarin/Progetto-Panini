@@ -94,8 +94,8 @@ if (count($order_arr_active) > 0)
                 <h1>SANDWECH </h1>
                 <h2>Hi, <?php echo $user[0]->name ?></h2>
             </div>
-        </row>        
-        <div class="table-container col-10 offset-1">
+        </row>       
+        <div class="table-container col-10 offset-1"> 
         <?php
             echo "<h5 class='mt-5'>$class->year$class->section</h5>";
         if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
@@ -109,7 +109,6 @@ if (count($order_arr_active) > 0)
                     <th>creato</th>
                     <th>ritiro</th>
                     <th>ricreazione</th>
-                    <th>stato</th>
                     <th></th>
                 </tr>
             </thead>
@@ -119,7 +118,6 @@ if (count($order_arr_active) > 0)
                     <td><?php echo $total['created'] ?? ''; ?></td>
                     <td><?php echo getPickup($total['pickup'])[0]->name ?? ''; ?></td>
                     <td><?php echo getBreak($total['break'])[0]->time ?? ''; ?></td>
-                    <td><?php echo getStatus($total['status'])[0]->description ?? ''; ?></td>
                     <td>
                         <a href="http://localhost:8080/Progetto-Panini/paninara/singleOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
                         <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->
@@ -153,7 +151,7 @@ if (count($order_arr_active) > 0)
                                 </form>
                             </div>
                         </div>   
-            </div>
+                    </div>
 
                 <?php
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -69,10 +69,9 @@ $order_arr_active = getActiveOrder();
                 <h1>SANDWECH </h1>
                 <h2>Hi, <?php echo $user[0]->name ?></h2>
             </div>
-        </row>        
+        </row>  
         <div class="table-container col-10 offset-1">
         <?php
-
         if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
             foreach ($order_arr_active as $total) {
                 $order_id = $total['id'];
@@ -80,13 +79,12 @@ $order_arr_active = getActiveOrder();
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>utente</th>
-                    <th>creato</th>
-                    <th>ritiro</th>
-                    <th>ricreazione</th>
-                    <th>stato</th>
-                    <th></th>
+                    <th scope="col">id</th>
+                    <th scope="col">utente</th>
+                    <th scope="col">creato</th>
+                    <th scope="col">ritiro</th>
+                    <th scope="col">ricreazione</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -96,7 +94,6 @@ $order_arr_active = getActiveOrder();
                     <td><?php echo $total['created'] ?? ''; ?></td>
                     <td><?php echo getPickup($total['pickup'])[0]->name ?? ''; ?></td>
                     <td><?php echo getBreak($total['break'])[0]->time ?? ''; ?></td>
-                    <td><?php echo getStatus($total['status'])[0]->description ?? ''; ?></td>
                     <td>
                         <a href="http://localhost:8080/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
                         <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->
@@ -162,9 +159,6 @@ $order_arr_active = getActiveOrder();
                 echo '<h5 class="d-flex justify-content-center mt-5">Nessun ordine</h5>';
             }
                         ?>                
-                </div>
-            </div>
-      </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>
