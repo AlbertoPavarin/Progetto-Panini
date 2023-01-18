@@ -2,7 +2,7 @@
 
 session_start();
 
-include_once dirname(__FILE__) . '/functions/login.php';
+include_once dirname(__FILE__) . '/functions/signup.php';
 include_once dirname(__FILE__) . '/functions/checkLogin.php';
 
 if (count($_SESSION) > 0)
@@ -15,15 +15,23 @@ $err = "";
 $loginErr = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (!empty($_POST['email']) && !empty($_POST['password'])) {
-    $data = [
-      "email" => $_POST['email'],
-      "password" => $_POST['password'],
-    ];
+  if (!empty($_POST['name']) && !empty($_POST['surname']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['conf_password'])) {
+    if ($_POST['conf_password'] == $_POST['password']){
+      $data = [
+        "name" => $_POST['name'],
+        "surname" => $_POST['surname'],
+        "email" => $_POST['email'],
+        "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
+      ];
+      
 
-    if (login($data) == -1)
-    {
-      $loginErr = "Email o password errata";
+      if (signup($data) == -1)
+      {
+        $loginErr = "Errore nella creazione";
+      }
+    }
+    else{
+      $loginErr = "Le password devono coincidere";
     }
   }
   else
@@ -43,13 +51,63 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body>
+        <div class="signup-pill-container">
+          <div class="signup-red-pill"></div>
+            <div class="signup-orange-pill"></div>
+          </div>
         <div class="container">
-            <div class="row">
-                <div class="signup-pill-container">
-                    <div class="signup-red-pill"></div>
-                    <div class="signup-orange-pill"></div>
+            <div class="pb-5">
+              <div class="signup-w-container">
+                Crea il tuo account 
+              </div>
+              <div class="line-box">
+                <div class="signup-line"></div>
+              </div>
+              <span class="error-msg"><?php echo $loginErr ?></span>
+              <form action="" method="post">
+              <div class="signup-container">
+                <div class="signup-orange">
+                  Nome
                 </div>
-            </div>
+                <input type="text" name="name" class="signup-input">
+              </div>
+              </div>
+              <div class="mt-5 pb-5">
+                <div class="signup-container">
+                  <div class="signup-red">
+                    Cognome
+                  </div>
+                  <input type="text" name="surname" class="signup-input">
+                </div>
+              </div>
+              <div class=" mt-5 pb-5">
+                <div class="signup-container">
+                  <div class="signup-orange">
+                    Mail
+                  </div>
+                  <input type="email" name="email" class="signup-input">
+                </div>
+              </div>
+              <div class=" mt-5 pb-5">
+                <div class="signup-container">
+                  <div class="signup-red">
+                    Password
+                  </div>
+                  <input type="password" name="password" class="signup-input">
+                </div>
+              </div>
+              <div class=" mt-5 pb-5">
+                <div class="signup-container">
+                  <div class="signup-orange">
+                    Conferma Password
+                  </div>
+                  <input type="password" name="conf_password" class="signup-input">
+                </div>
+              </div>
+              <div class="signup-container">
+                <input type="submit" value="Registrati" class="signup-btn">
+              </div>
+            </form>
         </div>
     </body>
 

@@ -196,7 +196,7 @@ a {
 }
 
 .error-msg{
-    font-size: 12px;
+    font-size: 15px;
     color: red;
 }
 
@@ -484,7 +484,7 @@ main{
   position: absolute;
   width: 53px;
   height: 84px;
-  right: 16px;
+  right: 10px;
   top: 6px;
 }
 
@@ -508,4 +508,93 @@ main{
   
   background: #FF9B18;
   border-radius: 25px;
+}
+
+.signup-w-container{
+  position: absolute;
+  width: 272px;
+  height: 29px;
+  top: 75px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+
+  color: #000000;
+}
+
+.signup-line{
+  position: absolute;
+  width: 80%;
+  height: 2px;
+  top: 104px;
+
+  background: #D9D9D9;
+  border-radius: 2px;
+}
+
+.signup-container{
+  position: absolute;
+  height: 80px;
+  margin-top: 80px;
+  width: 100%;
+}
+
+.signup-orange{
+  position: absolute;
+  width: 200px;
+  height: 24px;
+  
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  
+  color: #FF9B18;
+}
+
+.signup-red{
+  position: absolute;
+  width: 200px;
+  height: 24px;
+  
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  
+  color: #EE0F38;
+}
+
+.signup-input{
+  position: absolute;
+  width: 80%;
+  height: 56px;
+  margin-top: 30px;
+  border: none;
+
+  background: #EEEAEA;
+  border-radius: 15px;
+  padding-left: 10px;
+}
+
+.signup-btn{
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  margin-top: 50px;
+
+  background: #EE0F38;
+  border: 1px solid rgba(242, 24, 24, 0.74);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 49px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 42px;
+  color: #FFFFFF;
 }
