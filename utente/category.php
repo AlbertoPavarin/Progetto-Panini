@@ -92,17 +92,19 @@ if (isset($_GET["category_id"]))
                 </div>
                 <div class="prods-container">
                 <?php
-                foreach ([1, 2, 3, 4, 5, 6, 7, 8, 9] as $product)
+                foreach ($products as $product)
                 {?>
+                <a href="product.php?product_id=<?php echo $product['id'] ?>">
                     <div class="row prod-container mb-3">
                         <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/<?php echo $category->name ?>-icon.png" class="icon-container"></div>
-                        <div class="col-8 d-flex align-items-center"><b><?php echo $product?></b></div>
+                        <div class="col-8 d-flex align-items-center"><b><?php echo $product['name']?></b></div>
                         <div class="col-2 d-flex justify-content-center align-items-center">
                             <div class="price-container">
-                                <p class="p-price"><?php echo $product?>€</p>
+                                <p class="p-price"><?php echo $product['price']?>€</p>
                             </div>
                         </div>
                     </div>
+                </a>
                 <?php }
                     ?>
                 </div>

@@ -1,11 +1,20 @@
 <?php
 session_start();
 include_once dirname(__FILE__) . '/functions/checkLogin.php';
-include_once dirname(__FILE__) . '/functions/getCategories.php';
+include_once dirname(__FILE__) . '/functions/getArchiveProductByTag.php';
+include_once dirname(__FILE__) . '/functions/getProduct.php';
+include_once dirname(__FILE__) . '/functions/getCategory.php';
 
 $user = checkLogin();
 
-$categories = getCategories();
+if (isset($_GET["product_id"]))
+{
+
+    $product_id = $_GET["product_id"];
+
+    $product = getProduct($product_id);
+
+}
 
 ?>
 
@@ -47,19 +56,8 @@ $categories = getCategories();
             </nav>
         </header>
         <main>
-            <div class="container pb-4">
-                <div class="prods-container">
-                <?php
-                foreach ($categories as $category)
-                {?>
-                    <div class="row mb-3 category-container">
-                        <a href="category.php?category_id=<?php echo $category->id?>" class="d-flex justify-content-center align-items-center a-cat">
-                            <div class="col-12"><b><?php echo $category->name?></b></div>
-                        </a>
-                    </div>
-                <?php }
-                    ?>
-                </div>
+            <div class="container">
+                <div class="product-page-container"></div>
             </div>
         </main>
     </body>

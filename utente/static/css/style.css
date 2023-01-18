@@ -188,7 +188,11 @@
 
 a {
     text-decoration: none;
-    color: #A60400;
+    color: #000;
+}
+
+.a-cat{
+  text-align: center;
 }
 
 .error-msg{
@@ -200,10 +204,6 @@ a {
     list-style: none;
   }
   
-  a {
-    text-decoration: none;
-  }
-
 .section {
     margin-left: auto;
     margin-right: auto;
@@ -441,7 +441,6 @@ main{
   width: 55px;
   height: 55px;
 
-  mix-blend-mode: darken;
   border-radius: 4px; 
 }
 
@@ -470,4 +469,31 @@ main{
   border: 0;
   background-color: var(--container-color);
   box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+}
+
+.product-page-container{
+  height: 571px;
+  width: 100%;
+
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 45px;
+}
+
+.signup-pill-container{
+  position: absolute;
+  width: 53px;
+  height: 84px;
+  left: 321px;
+  top: 6px;
+}
+
+.signup-red-pill {
+  position: absolute;
+  width: 23px;
+  height: 56px;
+  top: 34px;
+
+  background: #EE0F38;
+  border-radius: 25px;
 }
