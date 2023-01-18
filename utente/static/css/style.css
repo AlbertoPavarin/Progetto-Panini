@@ -484,7 +484,7 @@ main{
   position: absolute;
   width: 53px;
   height: 84px;
-  left: 321px;
+  right: 16px;
   top: 6px;
 }
 
@@ -493,7 +493,19 @@ main{
   width: 23px;
   height: 56px;
   top: 34px;
+  right: 48px;
 
   background: #EE0F38;
+  border-radius: 25px;
+}
+
+.signup-orange-pill{
+  position: absolute;
+  width: 23px;
+  height: 56px;
+  right: 16px;
+  top: 6px;
+  
+  background: #FF9B18;
   border-radius: 25px;
 }

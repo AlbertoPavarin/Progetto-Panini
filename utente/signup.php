@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row">
                 <div class="signup-pill-container">
                     <div class="signup-red-pill"></div>
+                    <div class="signup-orange-pill"></div>
                 </div>
             </div>
         </div>
