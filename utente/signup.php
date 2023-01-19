@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "name" => $_POST['name'],
         "surname" => $_POST['surname'],
         "email" => $_POST['email'],
-        "password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
+        "password" => hash("sha256", $_POST['password']),
       ];
       
 
