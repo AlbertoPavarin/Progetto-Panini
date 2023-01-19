@@ -1,11 +1,10 @@
 <?php
 session_start();
+
 include_once dirname(__FILE__) . '/functions/checkLogin.php';
 include_once dirname(__FILE__) . '/functions/getCategories.php';
 
 $user = checkLogin();
-
-$categories = getCategories();
 
 ?>
 
@@ -25,13 +24,13 @@ $categories = getCategories();
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list ul">
                         <li class="nav__item pt-2">
-                            <a href="" class="nav__link active-link">
+                            <a href="index.php" class="nav__link">
                                 <i class='bx bx-home-alt nav__icon'></i>
                                 <span class="nav__name">Home</span>
                             </a>
                         </li>
                         <li class="nav__item pt-2">
-                            <a href="profile.php" class="nav__link">
+                            <a href="" class="nav__link active-link">
                                 <i class='bx bx-user nav__icon'></i>
                                 <span class="nav__name">Profilo</span>
                             </a>
@@ -47,18 +46,41 @@ $categories = getCategories();
             </nav>
         </header>
         <main>
-            <div class="container pb-4">
-                <div class="prods-container">
-                <?php
-                foreach ($categories as $category)
-                {?>
-                    <div class="row mb-3 category-container">
-                        <a href="category.php?category_id=<?php echo $category->id?>" class="d-flex justify-content-center align-items-center a-cat">
-                            <div class="col-12"><b><?php echo $category->name?></b></div>
-                        </a>
+            <div class="home-container-pill">
+                <div class="home-orange-pill"></div>
+                <div class="home-red-pill"></div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="name-home">
+                            <p>Ciao, <b><?php echo $user[0]->name ?></b></p>
+                        </div>
                     </div>
-                <?php }
-                    ?>
+                </div>
+                <div class="row d-flex justify-content-center align-items-center mt-5">
+                    <div class="profile-container d-flex justify-content-center align-items-center">
+                        <p class=""><?php echo strtoupper($user[0]->name[0] . $user[0]->surname[0]) ?></p>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <p class="d-flex justify-content-center align-items-center user-name-prof"><b><?php echo ucfirst($user[0]->name) ?></b></p>
+                </div>
+                <div class="row">
+                    <p class="d-flex justify-content-center align-items-center user-surname-prof"><b><?php echo ucfirst($user[0]->surname) ?></b></p>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <form action="">
+                            <input type="submit" value="Reset" class="btn-profile" name="reset">
+                        </form>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <form action="functions/logout.php">
+                            <input type="submit" class="btn-profile" value="Esci" name="esci">
+                        </form>
+                    </div>
                 </div>
             </div>
         </main>

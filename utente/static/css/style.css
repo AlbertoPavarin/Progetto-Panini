@@ -598,3 +598,26 @@ main{
   line-height: 42px;
   color: #FFFFFF;
 }
+
+.profile-container{
+  width: 225px;
+  height: 225px;
+  border-radius: 25px;
+  font-size: 170px;
+  color: #FFF;
+
+  background-color: #FF9B18;
+}
+
+.user-surname-prof, .user-name-prof {
+  font-size: 30px;
+}
+
+.btn-profile{
+  background-color: #EE0F38;
+  width: 100px;
+  color: #FFF;
+  height: 40px;
+  border: none;
+  border-radius: 40px;
+}

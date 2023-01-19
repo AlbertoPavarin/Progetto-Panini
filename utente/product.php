@@ -30,7 +30,7 @@ if (isset($_GET["product_id"]))
     </head>
     <body>
         <header class="">
-            <nav class="nav container-ns">
+        <nav class="nav container-ns">
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list ul">
                         <li class="nav__item pt-2">
@@ -41,14 +41,14 @@ if (isset($_GET["product_id"]))
                         </li>
                         <li class="nav__item pt-2">
                             <a href="#skills" class="nav__link">
-                                <i class='bx bx-book-alt nav__icon'></i>
-                                <span class="nav__name">Skills</span>
+                                <i class='bx bx-user nav__icon'></i>
+                                <span class="nav__name">Profilo</span>
                             </a>
                         </li>
                         <li class="nav__item pt-2">
                             <a href="#contactme" class="nav__link">
-                                <i class='bx bx-message-square-detail nav__icon'></i>
-                                <span class="nav__name">Contactme</span>
+                                <i class='bx bx-cart nav__icon'></i>
+                                <span class="nav__name">Carrello</span>
                             </a>
                         </li>
                     </ul>
