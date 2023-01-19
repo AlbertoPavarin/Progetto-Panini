@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $data = [
       "email" => $_POST['email'],
-      "password" => $_POST['password'],
+      "password" => hash("sha256", $_POST['password']),
     ];
 
     if (login($data) == -1)
