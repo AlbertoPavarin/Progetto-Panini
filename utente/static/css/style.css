@@ -603,7 +603,7 @@ main{
   width: 225px;
   height: 225px;
   border-radius: 25px;
-  font-size: 170px;
+  font-size: 130px;
   color: #FFF;
 
   background-color: #FF9B18;
@@ -613,7 +613,7 @@ main{
   font-size: 30px;
 }
 
-.btn-profile{
+.btn-profile, .order-btn-container{
   background-color: #EE0F38;
   width: 100px;
   color: #FFF;
@@ -658,4 +658,8 @@ main{
   text-align: center;
   position: absolute;
   height: 19px;
+}
+
+main{
+  height: 100%;
 }

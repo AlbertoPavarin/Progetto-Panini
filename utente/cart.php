@@ -100,6 +100,10 @@ $cart = getCart($_SESSION['user_id']);
                             </div>
                         </div>
                     <?php } ?>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-end">
+                        <div class="order-btn-container d-flex justify-content-center align-items-center">Ordina</div>
                     </div>
                     <?php
                 }
@@ -108,7 +112,6 @@ $cart = getCart($_SESSION['user_id']);
                     echo "<h4 class='mt-5'>Nessun prodotto attualmente nel carrello</h4>";
                 }
                         ?>
-            </div>
         </main>
     </body>
 
