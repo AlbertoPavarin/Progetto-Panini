@@ -6,6 +6,7 @@
     text-align: center;
     font-family: arial;
     font-weight: bold;
+    margin-top: 2.5rem;
 }
 .btn_opt{
   text-align: center;
@@ -187,4 +188,9 @@
     text-decoration: none;
     margin-right: 10px;
     font-size: 18px;
+  }
+
+  .index-img-container{
+    width: 150px;
+    height: 150px;
   }
