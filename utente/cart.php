@@ -10,13 +10,12 @@ $user = checkLogin();
 
 $cart = getCart($_SESSION['user_id']);
 
-var_dump($cart);
-
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
+    <script src="js/updateCartQuantity.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -86,17 +85,17 @@ var_dump($cart);
                                 <p class="p-price"><?php echo $product->price?>€</p>
                             </div>
                         </div>
-                        <div class="col-12 d-flex justify-content-center align-items-center">
+                        <div class="col-12 d-flex justify-content-center align-items-center pb-3">
                             <div class="quantity-container">
-                            <div class="row">
-                                <div class="col-4 d-flex justify-content-center align-items-center">-</div>
-                                <div class="col-4 d-flex justify-content-center align-items-center"><?php echo $product->quantity ?></div>
-                                <div class="col-4 pr-2 d-flex justify-content-center align-items-center">+</div>
+                                <div class="row">
+                                    <div id="minus-btn" class="col-4 d-flex justify-content-center align-items-center">-</div>
+                                    <div class="col-4 d-flex justify-content-center align-items-center"><?php echo $product->quantity ?></div>
+                                    <div id="plus-btn" class="col-4 pr-2 d-flex justify-content-center align-items-center">+</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
+                    </a>
                 <?php }
                     ?>
                 </div>
