@@ -76,8 +76,7 @@ $cart = getCart($_SESSION['user_id']);
                 <?php
                 foreach ($cart as $product)
                 {?>
-                <a href="product.php?product_id=<?php echo $product->product ?>">
-                    <div class="row cart-prod-container mb-3">
+                    <div class="row cart-prod-container mb-3 <?php echo $product->product ?>">
                         <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/<?php echo getCategory($product->tag_id)[0]->name ?>-icon.png" class="icon-container"></div>
                         <div class="col-8 d-flex align-items-center"><b><?php echo $product->name?></b></div>
                         <div class="col-2 d-flex justify-content-center align-items-center">
@@ -95,7 +94,6 @@ $cart = getCart($_SESSION['user_id']);
                             </div>
                         </div>
                     </div>
-                    </a>
                 <?php }
                     ?>
                 </div>
