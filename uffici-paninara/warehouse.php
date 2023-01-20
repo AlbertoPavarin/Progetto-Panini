@@ -46,8 +46,8 @@ $quantity=0;
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>
+                        <li><a class="dropdown-item" href="pickup.php">pickup point</a></li>
                     </ul>
-                    </li>
                 </ul>
                 <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
                 <form class="d-flex" role="search">
@@ -59,13 +59,13 @@ $quantity=0;
     </nav>
     <row>
         <div class="header">        
-            <h1>SANDWECH </h1>
+            <h1>PRODOTTI </h1>
             <h2>Hi, <?php echo $user[0]->name ?></h2>
         </div>
     </row>
     <div class="row">
         <div class="btn_opt">
-            <button onClick="location.href = 'newProduct.php'">
+            <button class="rounded" onClick="location.href = 'newProduct.php'">
                 crea nuovo prodotto
             </button>
         </div>

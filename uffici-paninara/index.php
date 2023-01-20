@@ -34,7 +34,13 @@ $user = checkLogin();
                             magazzino
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>                        
+                            <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>     
+                            <li><a class="dropdown-item" href="pickup.php">punti di ritiro</a></li>
+                            <li><a class="dropdown-item" href="tag.php">categorie</a></li>
+                            <li><a class="dropdown-item" href="ingredient.php?INGREDIENT_ID=0">ingredienti</a></li>
+                            <li><a class="dropdown-item" href="break.php">ricreazioni</a></li>
+                            <li><a class="dropdown-item" href="class.php">classi</a></li>
+
                         </ul>
                         </li>
                     </ul>

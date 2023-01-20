@@ -42,6 +42,7 @@ $user = checkLogin();
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>
+                            <li><a class="dropdown-item" href="pickup.php">pickup point</a></li>
                         </ul>
                         </li>
                     </ul>
@@ -116,10 +117,13 @@ $user = checkLogin();
                             <div class="checkbox-div"><input type="checkbox" name="allergen[]" value="<?php echo  ucfirst($allergen->id);?>">
                             <label for="text"><?php echo ucfirst($allergen->name);?></label></div>
                     <?php }}?>
-                    <input type="submit" value="sub">
+                    <input type="submit" name="sub" value="sub">
                 </form>
-                <?php $val=checkField();
-                echo $val;
+                <?php 
+                if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['sub']!=NULL){
+                    $val=checkField();
+                    echo $val;
+                }
                 ?>
             </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

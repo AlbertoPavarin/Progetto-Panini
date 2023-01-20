@@ -15,6 +15,9 @@
 .form-container{
   text-align: center;
 }
+.txt-center{
+  text-align: center;
+}
 .bord_solid{
   border-style: solid;
   border-width: 1px;
