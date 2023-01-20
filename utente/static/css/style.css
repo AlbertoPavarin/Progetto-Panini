@@ -639,6 +639,19 @@ main{
   background: #FF9B18;
   border: 1px solid #FFFFFF;
   border-radius: 25px;
+  color: #FFFFFF;
+}
+
+.delete-container
+{
+  width: 31px;
+  height: 31px;
+  margin-left: 10px;
+
+  background: #FF9B18;
+  border: 1px solid #FFFFFF;
+  border-radius: 25px;
+  color: #FFFFFF;
 }
 
 .quantity-m{
