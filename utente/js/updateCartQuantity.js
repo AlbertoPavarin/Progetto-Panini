@@ -57,3 +57,8 @@ function deleteProduct(id, user_id)
   .then((data) => console.log(data));
   location.reload();
 }
+
+function redirect($id_prod)
+{
+  location.href = `product.php?product_id=${$id_prod}`;
+}

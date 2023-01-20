@@ -80,7 +80,8 @@ $cart = getCart($_SESSION['user_id']);
                 <?php
                     foreach ($cart as $product)
                     {?>
-                        <div class="row cart-prod-container mb-3 <?php echo $product->product ?>">
+                    <div class="cart-prod-container">
+                        <div class="row cart-prod mb-3" onclick=redirect(<?php echo $product->product ?>)>
                             <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/<?php echo getCategory($product->tag_id)[0]->name ?>-icon.png" class="icon-container"></div>
                             <div class="col-8 d-flex align-items-center"><b><?php echo $product->name?></b></div>
                             <div class="col-2 d-flex justify-content-center align-items-center">
@@ -88,6 +89,7 @@ $cart = getCart($_SESSION['user_id']);
                                     <p class="p-price"><?php echo $product->price?>€</p>
                                 </div>
                             </div>
+                        </div>
                             <div class="col-12 d-flex justify-content-center align-items-center pb-3">
                                 <div class="quantity-container">
                                     <div class="row">
@@ -98,6 +100,7 @@ $cart = getCart($_SESSION['user_id']);
                                 </div>
                                 <div class="delete-container d-flex justify-content-center align-items-center" onclick=deleteProduct(<?php echo $product->product . "," . $_SESSION['user_id']?>)><i class='bx bx-trash'></i></div>
                             </div>
+                        </div>
                         </div>
                     <?php } ?>
                         </div>
