@@ -87,9 +87,9 @@ $cart = getCart($_SESSION['user_id']);
                         <div class="col-12 d-flex justify-content-center align-items-center pb-3">
                             <div class="quantity-container">
                                 <div class="row">
-                                    <div id="minus-btn-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center" onclick=deleteItem(<?php echo $product->product ?>)>-</div>
+                                    <div id="minus-btn-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center" onclick=deleteItem(<?php echo $product->product . "," . $_SESSION['user_id']?>)>-</div>
                                     <div id="text-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center"><?php echo $product->quantity ?></div>
-                                    <div id="plus-btn-<?php echo $product->product ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center" onclick=addItem(<?php echo $product->product ?>)>+</div>
+                                    <div id="plus-btn-<?php echo $product->product ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center" onclick=addItem(<?php echo $product->product . "," . $_SESSION['user_id']?>)>+</div>
                                 </div>
                             </div>
                         </div>
