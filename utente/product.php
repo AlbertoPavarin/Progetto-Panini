@@ -28,8 +28,8 @@ if (isset($_GET["product_id"]))
         <title>Prodotto</title>
         <link rel="stylesheet" href="static/css/style.css">
     </head>
-    <body>
-        <header class="">
+    <body class="">
+        <header>
         <nav class="nav container-ns">
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list ul">
@@ -55,10 +55,23 @@ if (isset($_GET["product_id"]))
                 </div>
             </nav>
         </header>
-        <main>
-            <div class="container">
-                <div class="product-page-container"></div>
-            </div>
+        <main class="pb-5">
+                <div class="d-flex justify-content-center align-items-end prod-c">
+                <div class="">
+                    <img src="static/img/<?php //echo $product['tag'] ?>panini.jpeg" alt="" class="prod-img-container d-flex justify-content-center align-items-end">
+                </div>
+                    <div class="product-page-container">
+                        <div class="">
+                            <div class="prod mt-5">
+                                <p class="prod-name"><?php echo $product['name'] ?> | <?php echo $product['price'] ?>€</p>
+                                <div class="line-box d-flex justify-content-center align-items-center">
+                                    <div class="product-line"></div>
+                                </div> 
+                                <p class="prod-desc">Descrizione</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </main>
     </body>
 
