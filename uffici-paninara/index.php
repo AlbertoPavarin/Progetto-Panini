@@ -27,11 +27,8 @@ $user = checkLogin();
                         <a class="nav-link element active" aria-current="page" href="index.php"><img src="static/img/app_logo.png" class="img-holder" alt=""></a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link element active" aria-current="page" href="categories.php">categorie</a>
-                        </li>
-                        <li class="nav-item">
                         <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            magazzino
+                            ...
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>     
@@ -40,7 +37,7 @@ $user = checkLogin();
                             <li><a class="dropdown-item" href="ingredient.php?INGREDIENT_ID=0">ingredienti</a></li>
                             <li><a class="dropdown-item" href="break.php">ricreazioni</a></li>
                             <li><a class="dropdown-item" href="class.php">classi</a></li>
-
+                            <li><a class="dropdown-item" href="offer.php">offerte</a></li>
                         </ul>
                         </li>
                     </ul>

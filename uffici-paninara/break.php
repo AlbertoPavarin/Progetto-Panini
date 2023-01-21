@@ -94,7 +94,7 @@ error_reporting(0);
     </tbody>
     <div class="row">
             <div class="container_pk rounded bord_solid col-4 offset-4" >
-                <form class="form_create" action="" method="post">
+                <form class="form_" action="" method="post">
                     <label class="lbl-bold" for="text"> inserisci l'orario della nuova ricreazione</label>
                     <div class="row form-element">
                         <input class=" col-10 offset-1" type="text" id="" rows="1" name="b_hour" placeholder="ora">
@@ -110,7 +110,7 @@ error_reporting(0);
         </div>
     </div>
     <?php
-    if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['b_hour']!=NULL && $_POST['b_min']!=NULL && intval($_POST['b_hour'])>=0 && intval($_POST['b_hour'])<=12 && intval($_POST['b_min'])>=0 && intval($_POST['b_min'])<=12){
+    if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['b_hour']!=NULL && $_POST['b_min']!=NULL && intval($_POST['b_hour'])>=0 && intval($_POST['b_hour'])<=12 && intval($_POST['b_min'])>=0 && intval($_POST['b_min'])<=59){
         $hour=formatTime($_POST['b_hour']);
         $min=formatTime($_POST['b_min']);
         $time=$hour.':'.$min.':00';
