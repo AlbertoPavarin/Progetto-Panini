@@ -76,11 +76,11 @@ $cart = getCart($_SESSION['user_id']);
                 if (count((array)$cart) > 0)
                 {
                     ?>
-                <div class="prods-container mt-5">
+                <div class="prods-container container mt-5 pb-4">
                 <?php
                     foreach ($cart as $product)
                     {?>
-                    <div class="cart-prod-container">
+                    <div class="cart-prod-container mt-4">
                         <div class="row cart-prod mb-3" onclick=redirect(<?php echo $product->product ?>)>
                             <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/<?php echo getCategory($product->tag_id)[0]->name ?>-icon.png" class="icon-container"></div>
                             <div class="col-8 d-flex align-items-center"><b><?php echo $product->name?></b></div>
@@ -101,13 +101,12 @@ $cart = getCart($_SESSION['user_id']);
                                 <div class="delete-container d-flex justify-content-center align-items-center" onclick=deleteProduct(<?php echo $product->product . "," . $_SESSION['user_id']?>)><i class='bx bx-trash'></i></div>
                             </div>
                         </div>
-                        </div>
                     <?php } ?>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center align-items-end">
+                    <div class="d-flex justify-content-center align-items-end mt-5">
                         <div class="order-btn-container d-flex justify-content-center align-items-center p-4">Ordina</div>
                     </div>
+                    </div>
+
                     <?php
                 }
                 else

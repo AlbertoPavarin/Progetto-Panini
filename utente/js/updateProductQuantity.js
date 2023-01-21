@@ -31,5 +31,7 @@ function addToCart(id, user_id)
           fetch('http://localhost:8080/Progetto-Panini/food-api/API/cart/setAddItem.php', requestOptions)
           .then((response) => response.json())
           .then((data) => console.log(data));
+
+          alert('Ordinato');
     }
 }
