@@ -33,7 +33,7 @@ error_reporting(0);
                         </li>
                         <li class="nav-item">
                         <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            ...
+                        opzioni
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>     
@@ -47,10 +47,7 @@ error_reporting(0);
                         </li>
                     </ul>
                     <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">cerca prodotto per id</button>
-                    </form>
+
                 </div>
             </div>
         </nav>
@@ -92,7 +89,7 @@ error_reporting(0);
                 <form class="form_" action="" method="post">
                     <label class="lbl-bold" for="text"> inserisci i dati della nuova classe</label>
                     <div class="row form-element">
-                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="c_year" placeholder="anno">
+                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="c_year" onkeypress="return isNumber(event)" placeholder="anno">
                     </div>
                     <div class="row form-element">
                         <input class=" col-10 offset-1" type="text" id="" rows="1" name="c_section" placeholder="sezione">
@@ -109,7 +106,17 @@ error_reporting(0);
         setClass(intval($_POST['c_year']),$_POST['c_section'],);
         echo"<script> window.location.href = 'class.php'; </script>"; 
     }
-    ?>    
+    ?> 
+        <script>
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script>    
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>

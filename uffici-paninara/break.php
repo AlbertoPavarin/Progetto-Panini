@@ -31,36 +31,36 @@ error_reporting(0);
     </head>
     <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                    <a class="nav-link element active" aria-current="page" href="index.php"><img src="static/img/app_logo.png" class="img-holder" alt=""></a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link element active" aria-current="page" href="categories.php">categorie</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        magazino
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>
-                        <li><a class="dropdown-item" href="pickup.php">pickup point</a></li>
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                        <a class="nav-link element active" aria-current="page" href="index.php"><img src="static/img/app_logo.png" class="img-holder" alt=""></a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            opzioni
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>     
+                            <li><a class="dropdown-item" href="pickup.php">punti di ritiro</a></li>
+                            <li><a class="dropdown-item" href="tag.php">categorie</a></li>
+                            <li><a class="dropdown-item" href="ingredient.php?INGREDIENT_ID=0">ingredienti</a></li>
+                            <li><a class="dropdown-item" href="break.php">ricreazioni</a></li>
+                            <li><a class="dropdown-item" href="class.php">classi</a></li>
+                            <li><a class="dropdown-item" href="offer.php">offerte</a></li>
+                        </ul>
+                        </li>
                     </ul>
-                    </li>
-                </ul>
-                <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">cerca prodotto per id</button>
-                </form>
+                    <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
+
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+
     <row>
         <div class="header">        
             <h1>BREAK</h1>
@@ -97,10 +97,10 @@ error_reporting(0);
                 <form class="form_" action="" method="post">
                     <label class="lbl-bold" for="text"> inserisci l'orario della nuova ricreazione</label>
                     <div class="row form-element">
-                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="b_hour" placeholder="ora">
+                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="b_hour" onkeypress="return isNumber(event)" placeholder="ora">
                     </div>
                     <div class="row form-element">
-                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="b_min" placeholder="minuti">
+                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="b_min" onkeypress="return isNumber(event)" placeholder="minuti">
                     </div>
                     <div class="row form-element">
                         <input class=" col-10 offset-1" type="submit" name="create_pk" value="crea">
@@ -118,6 +118,16 @@ error_reporting(0);
         echo"<script> window.location.href = 'break.php'; </script>"; 
     }
     ?>    
+    <script>
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script> 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -28,7 +28,7 @@ $user = checkLogin();
                         </li>
                         <li class="nav-item">
                         <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            ...
+                        opzioni
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>     
@@ -42,10 +42,7 @@ $user = checkLogin();
                         </li>
                     </ul>
                     <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">cerca prodotto per id</button>
-                    </form>
+
                 </div>
             </div>
         </nav>
@@ -53,6 +50,18 @@ $user = checkLogin();
             <div class="header">        
                 <h1>SANDWECH</h1>
                 <h2>Hi, <?php echo $user[0]->name ?></h2>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-5 d-flex justify-content-center align-items-center">
+                        <div>
+                            <img src="static/img/app_logo.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5 d-flex justify-content-center align-items-center">
+                        <p><b><?php echo $user[0]->email ?></b></p>
+                    </div>
+                </div>
             </div>
         </row>
 

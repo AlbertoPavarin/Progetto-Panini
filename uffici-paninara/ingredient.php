@@ -37,7 +37,7 @@ $ingr_id=0;
                         </li>
                         <li class="nav-item">
                         <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            ...
+                        opzioni
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>     
@@ -51,10 +51,7 @@ $ingr_id=0;
                         </li>
                     </ul>
                     <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">cerca prodotto per id</button>
-                    </form>
+
                 </div>
             </div>
         </nav>
@@ -90,13 +87,13 @@ $ingr_id=0;
                         <input class=" col-10 offset-1" type="text" id="" rows="1" name="ingr_descr" placeholder="descrizione">
                     </div>
                     <div class="row form-element">
-                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="ingr_price" placeholder="prezzo">
+                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="ingr_price" onkeypress="return isNumber(event)" placeholder="prezzo">
                     </div>
                     <div class="row form-element">
-                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="ingr_extra" placeholder="extra">
+                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="ingr_extra" onkeypress="return isNumber(event)" placeholder="extra">
                     </div>
                     <div class="row form-element">
-                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="ingr_quantity" placeholder="quantità">
+                        <input class=" col-10 offset-1" type="text" id="" rows="1" name="ingr_quantity" onkeypress="return isNumber(event)" placeholder="quantità">
                     </div>
                     <div class="row form-element">
                         <input class=" col-10 offset-1" type="submit" name="create_tag" value="crea">
@@ -124,11 +121,11 @@ $ingr_id=0;
                         <label for="text">descrizione:</label>
                         <div class="row form-element"> <input type="text" name="updIngr_descr" value="<?php echo $ingr->description;?>"></div>
                         <label for="text">prezzo:</label>
-                        <div class="row form-element"> <input type="text" name="updIngr_price" value="<?php echo $ingr->price;?>"></div>
+                        <div class="row form-element"> <input type="text" name="updIngr_price" onkeypress="return isNumber(event)" value="<?php echo $ingr->price;?>"></div>
                         <label for="text">extra:</label>
-                        <div class="row form-element"> <input type="text" name="updIngr_extra" value="<?php echo $ingr->extra;?>"></div>
+                        <div class="row form-element"> <input type="text" name="updIngr_extra" onkeypress="return isNumber(event)" value="<?php echo $ingr->extra;?>"></div>
                         <label for="text">quantità:</label>
-                        <div class="row form-element"> <input type="text" name="updIngr_quantity" value="<?php echo $ingr->quantity;?>"></div>
+                        <div class="row form-element"> <input type="text" name="updIngr_quantity" onkeypress="return isNumber(event)" value="<?php echo $ingr->quantity;?>"></div>
                         <div class="row form-element"><input type="submit" name="Ingr_upd" value="modifica"></div>
                     </form>
                 </div>
@@ -180,6 +177,16 @@ $ingr_id=0;
         echo"<script> window.location.href = 'ingredient.php?INGREDIENT_ID=0'; </script>"; 
     }
     ?>    
+    <script>
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+    </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>

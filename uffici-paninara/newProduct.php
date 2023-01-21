@@ -35,7 +35,7 @@ $user = checkLogin();
                         </li>
                         <li class="nav-item">
                         <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            ...
+                        opzioni
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>     
@@ -49,10 +49,7 @@ $user = checkLogin();
                         </li>
                     </ul>
                     <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">cerca prodotto per id</button>
-                    </form>
+
                 </div>
             </div>
         </nav>
@@ -62,9 +59,9 @@ $user = checkLogin();
                 <h2>Hi, <?php echo $user[0]->name ?></h2>
             </div>
         </row>
-            <div class="form-container bord_solid col-4 offset-4 ">
+            <div class="form-container rounded bord_solid col-4 offset-4 ">
                 <h2 class="title-newProd bord_bottom_solid">crea un nuovo prodotto</h2>
-                <form class="form-newProd" action="" method="post">
+                <form class="" action="" method="post">
                     <div class="label-bgcolor"><label for="text">informazioni prodotto</label></div>
                     <div><label class="required-field-lbl" for="text">iserisci nome</label></div>
                     <div><input type="text" name="prod_name" value=""></div>
@@ -119,7 +116,9 @@ $user = checkLogin();
                             <div class="checkbox-div"><input type="checkbox" name="allergen[]" value="<?php echo  ucfirst($allergen->id);?>">
                             <label for="text"><?php echo ucfirst($allergen->name);?></label></div>
                     <?php }}?>
-                    <input type="submit" name="sub" value="sub">
+                    <div class="form-element">
+                    <input class=" rounded" type="submit" name="sub" value="sub">
+                    </div>
                 </form>
                 <?php 
                 if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['sub']!=NULL){

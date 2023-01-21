@@ -39,7 +39,7 @@ $quantity=0;
                         </li>
                         <li class="nav-item">
                         <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            ...
+                        opzioni
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>     
@@ -53,10 +53,6 @@ $quantity=0;
                         </li>
                     </ul>
                     <a class=" logout-a" href='functions/logout.php' aria-current="page">Logout</a>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">cerca prodotto per id</button>
-                    </form>
                 </div>
             </div>
         </nav>
