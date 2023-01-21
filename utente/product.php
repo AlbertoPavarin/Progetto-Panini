@@ -20,14 +20,14 @@ if (isset($_GET["product_id"]))
 function concatenateProduct($id)
 {
     $ingredients = getProductIngredients($id);
-    $strIng = "";
+    $names = array(); 
 
     foreach($ingredients as $ingredient)
     {
-        $strIng .= $ingredient->name; 
+        $names[] = $ingredient->name; 
     }
 
-    return $strIng;
+    return join(", ", (array)$names);
 }
 
 ?>
@@ -35,6 +35,7 @@ function concatenateProduct($id)
 <!DOCTYPE html>
 <html>
     <head>
+    <script src="js/updateProductQuantity.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -72,11 +73,11 @@ function concatenateProduct($id)
         <main class="pb-5">
                 <div class="d-flex justify-content-center align-items-end prod-c">
                 <div class="">
-                    <img src="static/img/<?php //echo $product['tag'] ?>panini.jpeg" alt="" class="prod-img-container d-flex justify-content-center align-items-end">
+                    <!--<img src="static/img/<?php //echo $product['tag'] ?>panini.jpeg" alt="" class="prod-img-container d-flex justify-content-center align-items-end">-->
                 </div>
                     <div class="product-page-container">
                         <div class="">
-                            <div class="prod mt-5">
+                            <div class="prod">
                                 <p class="prod-name"><?php echo $product['name'] ?> | <?php echo $product['price'] ?>€</p>
                                 <div class="line-box d-flex justify-content-center align-items-center">
                                     <div class="product-line"></div>
@@ -86,6 +87,18 @@ function concatenateProduct($id)
                                     <p class="description-product"><?php echo $product['description'] ?></p>
                                     <p class="prod-ing">Ingredienti</p>
                                     <p><?php echo concatenateProduct($product['id']) ?></p>
+                                </div>
+                                <div class="col-12 d-flex justify-content-center align-items-center pb-3">
+                                    <div class="quantity-container d-flex justify-content-center align-items-center">
+                                        <div class="row">
+                                            <div id="minus-btn-<?php echo $product['id'] ?>" class="col-4 d-flex justify-content-center align-items-center" onclick=deleteItem(<?php echo $product['id']?>)>-</div>
+                                            <div id="text-<?php echo $product['id'] ?>" class="col-4 d-flex justify-content-center align-items-center">1</div>
+                                            <div id="plus-btn-<?php echo $product['id'] ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center" onclick=addItem(<?php echo $product['id']?>)>+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-end">
+                                    <div class="order-btn-container d-flex justify-content-center align-items-center p-2" onclick=addToCart(<?php echo $product['id'] . "," . $_SESSION['user_id']?>)>Aggiungi al carrello</div>
                                 </div>
                             </div>
                         </div>

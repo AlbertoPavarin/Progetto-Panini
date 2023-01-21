@@ -606,7 +606,7 @@ main{
 
 .btn-profile, .order-btn-container{
   background-color: #EE0F38;
-  width: 100px;
+  width: auto;
   color: #FFF;
   height: 40px;
   border: none;
@@ -658,7 +658,7 @@ main{
 
 .product-page-container{
   position: relative;
-  height: 40%;
+  height: 50%;
   width: 100%;
   margin-bottom: 5rem;
 
@@ -675,8 +675,8 @@ main{
 
 .prod-img-container{
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 55%;
   left: 0px;
   top: -30px;
 
@@ -687,6 +687,7 @@ main{
   position: absolute;
   width: 100%;
   height: 36px;
+  margin-top:2rem;
 
   line-height: 36px;
 
@@ -730,4 +731,12 @@ main{
 
 .product-description{
   margin-top: 5px;
+}
+
+@media screen and (max-height: 668px) {
+  .prod
+  {
+    line-height: 25px;
+    margin-top: 1rem;
+  }
 }
