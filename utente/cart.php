@@ -24,6 +24,7 @@ $cart = getCart($_SESSION['user_id']);
         <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body>
+    <?php require_once(__DIR__.'/static/circleButton.php'); ?>
         <header class="">
         <nav class="nav container-ns">
                 <div class="nav__menu" id="nav-menu">

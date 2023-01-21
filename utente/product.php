@@ -44,6 +44,7 @@ function concatenateProduct($id)
         <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body class="">
+        <?php require_once(__DIR__.'/static/circleButton.php'); ?>
         <header>
         <nav class="nav container-ns">
                 <div class="nav__menu" id="nav-menu">
