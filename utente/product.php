@@ -4,6 +4,7 @@ include_once dirname(__FILE__) . '/functions/checkLogin.php';
 include_once dirname(__FILE__) . '/functions/getArchiveProductByTag.php';
 include_once dirname(__FILE__) . '/functions/getProduct.php';
 include_once dirname(__FILE__) . '/functions/getCategory.php';
+include_once dirname(__FILE__) . '/functions/getProductIngredient.php';
 
 $user = checkLogin();
 
@@ -14,6 +15,19 @@ if (isset($_GET["product_id"]))
 
     $product = getProduct($product_id);
 
+}
+
+function concatenateProduct($id)
+{
+    $ingredients = getProductIngredients($id);
+    $strIng = "";
+
+    foreach($ingredients as $ingredient)
+    {
+        $strIng .= $ingredient->name; 
+    }
+
+    return $strIng;
 }
 
 ?>
@@ -67,7 +81,12 @@ if (isset($_GET["product_id"]))
                                 <div class="line-box d-flex justify-content-center align-items-center">
                                     <div class="product-line"></div>
                                 </div> 
-                                <p class="prod-desc">Descrizione</p>
+                                <div class="prod-info-container">
+                                    <p class="prod-desc">Descrizione</p>
+                                    <p class="description-product"><?php echo $product['description'] ?></p>
+                                    <p class="prod-ing">Ingredienti</p>
+                                    <p><?php echo concatenateProduct($product['id']) ?></p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -711,7 +711,23 @@ main{
   border-radius: 2px;
 }
 
-.prod-desc{
-  color: #FF9B18;
+.prod-info-container{
   margin-left: 60px;
+}
+
+.prod-desc, .prod-ing{
+  margin-top: 30px;
+  color: #FF9B18;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 2px;
+}
+
+.prod-ing{
+  margin-top: 20px;
+}
+
+.product-description{
+  margin-top: 5px;
 }
