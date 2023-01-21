@@ -17,6 +17,7 @@ session_start();
 $user = checkLogin();
 
 $classes = getClass();
+$check = false;
 
 $classOrders = array();
 //var_dump($order_arr_active);
@@ -44,6 +45,7 @@ $classOrders = array();
         foreach($classes as $class)
         {   
         if (is_array($order_arr_active = getActiveOrderByClass($class->id))){
+            $check = true;
             echo "<h5 class='mt-5'>$class->year$class->section</h5>";
             echo "<a href='classOrders.php?CLASS_ID=$class->id'>visualizza</a>";
         if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
@@ -78,6 +80,12 @@ $classOrders = array();
         }
     }
 }
+
+if (!$check)
+{
+    echo '<h5 class="d-flex justify-content-center mt-5">Nessun ordine</h5>';
+}
+
                         ?>                
                 </div>
             </div>

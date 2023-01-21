@@ -127,7 +127,7 @@ if (count($order_arr_active) > 0)
                     foreach ($order_arr_active as $order)
                     {
                         setStatusOrder($order['id']);
-                        echo '<script>location.href = "activeOrder.php?ORDER_ID=0"</script>';
+                        echo '<script>location.href = "activeOrderbyClass.php"</script>';
                     }
                 }
         }

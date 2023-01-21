@@ -22,6 +22,8 @@ $order_id=0;
 
 $pickups = getArchivePickup();
 
+$check = false;
+
 $pickupsOrders = array();
 //var_dump($order_arr_active);
 ?>
@@ -49,6 +51,7 @@ $pickupsOrders = array();
         {   
         if (is_array($order_arr_active = getActiveOrderByPickup($pickup->id))){
             echo "<h5 class='mt-5'>$pickup->name</h5>";
+            $check = true;
             foreach ($order_arr_active as $total) {
                 $order_id = $total['id'];
             ?>
@@ -80,6 +83,10 @@ $pickupsOrders = array();
             </table>
                 <?php
         }
+    }
+    if (!$check)
+    {
+        echo '<h5 class="d-flex justify-content-center mt-5">Nessun ordine</h5>';
     }
                         ?>                
                 </div>
