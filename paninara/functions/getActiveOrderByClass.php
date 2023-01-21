@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 function getActiveOrderByClass($id)
 {
   $url = 'http://localhost:8080/Progetto-Panini/food-api/API/order/getActiveOrderByClass.php?ID=' . $id;

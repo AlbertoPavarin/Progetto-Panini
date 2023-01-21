@@ -26,24 +26,29 @@ function getProductsFromOrder($orderId, &$products, &$price)
 session_start();
 
 $user = checkLogin();
+$check = false;
 
-$order_id=0;
 $id = $_GET['CLASS_ID'];
+$order_arr_active = array();
 
-$class = getClassById($id)[0];
-
-$order_arr_active = getActiveOrderByClass($class->id);
-
-if (count($order_arr_active) > 0)
+$class = getClassById($id);
+if ($class != NULL) 
 {
-    $products = array();
+    $order_arr_active = getActiveOrderByClass($class[0]->id);
 
-    $price = 0;
-
-    foreach ($order_arr_active as $order)
+    if ($order_arr_active > 0)
     {
-        getProductsFromOrder($order['id'], $products, $price);
+        $check = true;
+        $products = array();
+
+        $price = 0;
+
+        foreach ($order_arr_active as $order)
+        {
+            getProductsFromOrder($order['id'], $products, $price);
+        }
     }
+
 }
 ?>
 
@@ -66,7 +71,9 @@ if (count($order_arr_active) > 0)
         </row>       
         <div class="table-container col-10 offset-1"> 
         <?php
-            echo "<h5 class='mt-5'>$class->year$class->section</h5>";
+        if (is_array($class) && $check)
+        {
+            echo "<h5 class='mt-5'>" . $class[0]->year .$class[0]->section . "</h5>";
         if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
             foreach ($order_arr_active as $total) {
                 $order_id = $total['id'];
@@ -99,7 +106,7 @@ if (count($order_arr_active) > 0)
                 <div class="bord_solid col-10 offset-1">
                     <div class="row">
                         <div class="bord_bottom_solid">
-                            <p>Proprietario: <?php echo "$class->year" . "$class->section"; ?></p>
+                            <p>Proprietario: <?php echo $class[0]->year . $class[0]->section; ?></p>
                         </div>
                      </div>
                     <?php
@@ -131,6 +138,11 @@ if (count($order_arr_active) > 0)
                     }
                 }
         }
+    }
+    else
+    {
+        echo '<h5 class="d-flex justify-content-center mt-5">Nessun ordine</h5>';
+    }
                         ?>                
                 </div>
             </div>
