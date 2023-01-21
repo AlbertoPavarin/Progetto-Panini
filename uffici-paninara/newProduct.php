@@ -23,7 +23,7 @@ $user = checkLogin();
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,15 +34,17 @@ $user = checkLogin();
                         <a class="nav-link element active" aria-current="page" href="index.php"><img src="static/img/app_logo.png" class="img-holder" alt=""></a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link element active" aria-current="page" href="categories.php">categorie</a>
-                        </li>
-                        <li class="nav-item">
                         <a class="nav-link element active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            magazino
+                            ...
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>
-                            <li><a class="dropdown-item" href="pickup.php">pickup point</a></li>
+                            <li><a class="dropdown-item" href="warehouse.php?PRODUCT_ID=0">prodotti disponibili</a></li>     
+                            <li><a class="dropdown-item" href="pickup.php">punti di ritiro</a></li>
+                            <li><a class="dropdown-item" href="tag.php">categorie</a></li>
+                            <li><a class="dropdown-item" href="ingredient.php?INGREDIENT_ID=0">ingredienti</a></li>
+                            <li><a class="dropdown-item" href="break.php">ricreazioni</a></li>
+                            <li><a class="dropdown-item" href="class.php">classi</a></li>
+                            <li><a class="dropdown-item" href="offer.php">offerte</a></li>
                         </ul>
                         </li>
                     </ul>
