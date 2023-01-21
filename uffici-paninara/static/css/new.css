@@ -16,10 +16,23 @@
   text-align: center;
   border-radius: 5%;
 }
+.txt-center{
+  text-align: center;
+}
 .bord_solid{
   border-style: solid;
   border-width: 1px;
   border-color: black;
+}
+.form_{
+  padding-top:10px;
+  padding-bottom:10px;
+}
+.lbl-bold{
+  font-weight: bold;
+}
+.form-element{
+  padding-top:10px;
 }
 .title-newProd{
     margin: 0px;
@@ -41,6 +54,10 @@ margin-bottom: 10px;
 }
 tr,th{
   max-width: 330px;
+}
+.table-ingredient{
+  padding-bottom: 15px;
+  text-align: center;
 }
 .table_single_ord{
   padding-top: 30px;
