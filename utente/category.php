@@ -4,6 +4,7 @@ include_once dirname(__FILE__) . '/functions/checkLogin.php';
 include_once dirname(__FILE__) . '/functions/getArchiveProductByTag.php';
 include_once dirname(__FILE__) . '/functions/getProduct.php';
 include_once dirname(__FILE__) . '/functions/getCategory.php';
+include_once dirname(__FILE__) . '/functions/getProductLikeWithTag.php';
 
 $user = checkLogin();
 
@@ -21,6 +22,12 @@ if (isset($_GET["category_id"]))
     {
         $product = getProduct($product_tag->product);
         array_push($products, $product);
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {  
+        $products = getProductLikeWithTag($_POST['name'], $category_id);
+        var_dump($products);
     }
 }
 
@@ -81,7 +88,7 @@ if (isset($_GET["category_id"]))
                     <div class="col-12">
                         <form action="" method="post" class="mt-5">
                             <div class="form-group">
-                                <input type="text" class="searchbar form-control">
+                                <input type="text" class="searchbar form-control" name="name" placeholder="Cerca">
                             </div>
                         </form>
                     </div>
