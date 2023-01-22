@@ -27,7 +27,6 @@ if (isset($_GET["category_id"]))
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {  
         $products = getProductLikeWithTag($_POST['name'], $category_id);
-        var_dump($products);
     }
 }
 
@@ -88,7 +87,7 @@ if (isset($_GET["category_id"]))
                     <div class="col-12">
                         <form action="" method="post" class="mt-5">
                             <div class="form-group">
-                                <input type="text" class="searchbar form-control" name="name" placeholder="Cerca">
+                                <input type="text" class="searchbar form-control" name="name" placeholder="Cerca" autocomplete="off">
                             </div>
                         </form>
                     </div>
