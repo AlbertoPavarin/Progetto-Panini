@@ -607,10 +607,17 @@ main{
 .btn-profile, .order-btn-container{
   background-color: #EE0F38;
   width: auto;
-  color: #FFF;
   height: 40px;
   border: none;
   border-radius: 40px;
+  color: #FFF;
+  font-weight: 700;
+}
+
+.btn{
+  background-color: transparent;
+  border: none;
+  color: #FFF;
   font-weight: 700;
 }
 

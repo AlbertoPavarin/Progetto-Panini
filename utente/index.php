@@ -46,7 +46,7 @@ $categories = getCategories();
                 </div>
             </nav>
         </header>
-        <main>
+        <main class = "d-flex justify-content-center align-items-center">
             <div class="container pb-4">
                 <div class="prods-container">
                 <?php

@@ -77,11 +77,11 @@ $cart = getCart($_SESSION['user_id']);
                 if (count((array)$cart) > 0)
                 {
                     ?>
-                <div class="prods-container container mt-5 pb-4">
+                <div class="prods-container mt-5 pb-4">
                 <?php
                     foreach ($cart as $product)
                     {?>
-                    <div class="cart-prod-container mt-4">
+                    <div class="cart-prod-container mt-4 p-1">
                         <div class="row cart-prod mb-3" onclick=redirect(<?php echo $product->product ?>)>
                             <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/<?php echo getCategory($product->tag_id)[0]->name ?>-icon.png" class="icon-container"></div>
                             <div class="col-8 d-flex align-items-center"><b><?php echo $product->name?></b></div>
@@ -104,7 +104,11 @@ $cart = getCart($_SESSION['user_id']);
                         </div>
                     <?php } ?>
                     <div class="d-flex justify-content-center align-items-end mt-5">
-                        <div class="order-btn-container d-flex justify-content-center align-items-center p-4">Ordina</div>
+                        <div class="order-btn-container d-flex justify-content-center align-items-center p-4">
+                            <form action="" method="post">
+                                <input type="submit" value="Ordina" class="btn">
+                            </form>
+                        </div>
                     </div>
                     </div>
 

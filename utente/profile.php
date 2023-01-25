@@ -70,16 +70,16 @@ $user = checkLogin();
                 <div class="row">
                     <p class="d-flex justify-content-center align-items-center user-surname-prof"><b><?php echo ucfirst($user[0]->surname) ?></b></p>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-4 d-flex justify-content-center align-items-center">
+                <div class="row mt-3 d-flex justify-content-center align-items-center">
+                    <div class="col-4 d-flex justify-content-center align-items-center btn-profile">
                         <form action="">
-                            <input type="submit" value="Reset" class="btn-profile" name="reset">
+                            <input type="submit" value="Reset" class="btn" name="reset">
                         </form>
                     </div>
                     <div class="col-4"></div>
-                    <div class="col-4 d-flex justify-content-center align-items-center">
+                    <div class="col-4 d-flex justify-content-center align-items-center btn-profile">
                         <form action="functions/logout.php">
-                            <input type="submit" class="btn-profile" value="Esci" name="esci">
+                            <input type="submit" class="btn" value="Esci" name="esci">
                         </form>
                     </div>
                 </div>

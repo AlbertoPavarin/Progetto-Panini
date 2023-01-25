@@ -99,7 +99,7 @@ function concatenateProduct($id)
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center align-items-end">
-                                    <div class="order-btn-container d-flex justify-content-center align-items-center p-2" onclick=addToCart(<?php echo $product['id'] . "," . $_SESSION['user_id']?>)>Aggiungi al carrello</div>
+                                    <div class="order-btn-container d-flex justify-content-center align-items-center p-4" onclick=addToCart(<?php echo $product['id'] . "," . $_SESSION['user_id']?>)>Aggiungi al carrello</div>
                                 </div>
                             </div>
                         </div>
