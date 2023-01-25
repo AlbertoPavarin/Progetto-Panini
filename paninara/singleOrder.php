@@ -94,7 +94,7 @@ if (isset($order))
                     echo "
                     <div class='row'>
                         <div class='bord_top_solid p-3'>
-                            <h4>Ordine già conslcuso</h4>
+                            <h4>Ordine già concluso</h4>
                         </div>
                     </div>";
                 }
