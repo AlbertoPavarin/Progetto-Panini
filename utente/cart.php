@@ -105,8 +105,8 @@ $cart = getCart($_SESSION['user_id']);
                     <?php } ?>
                     <div class="d-flex justify-content-center align-items-end mt-5">
                         <div class="order-btn-container d-flex justify-content-center align-items-center p-4">
-                            <form action="" method="post">
-                                <input type="submit" value="Ordina" class="btn">
+                            <form action="order.php">
+                                <input type="submit" value="Ordina" class="btnn">
                             </form>
                         </div>
                     </div>
