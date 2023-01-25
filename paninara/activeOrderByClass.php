@@ -49,10 +49,8 @@ $classOrders = array();
             echo "<h5 class='mt-5'>$class->year$class->section</h5>";
             echo "<a href='classOrders.php?CLASS_ID=$class->id'>visualizza</a>";
         if (is_array($order_arr_active) !== false && count($order_arr_active) > 0) {
-            foreach ($order_arr_active as $total) {
-                $order_id = $total['id'];
             ?>
-        <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>id</th>
@@ -62,6 +60,10 @@ $classOrders = array();
                     <th></th>
                 </tr>
             </thead>
+            <?php
+            foreach ($order_arr_active as $total) {
+                $order_id = $total['id'];
+            ?>
             <tbody>
                 <tr>
                     <td><?php echo $total['id'] ?? ''; ?></td>

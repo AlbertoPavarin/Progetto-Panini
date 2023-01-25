@@ -52,10 +52,8 @@ $pickupsOrders = array();
         if (is_array($order_arr_active = getActiveOrderByPickup($pickup->id))){
             echo "<h5 class='mt-5'>$pickup->name</h5>";
             $check = true;
-            foreach ($order_arr_active as $total) {
-                $order_id = $total['id'];
             ?>
-        <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>id</th>
@@ -66,6 +64,10 @@ $pickupsOrders = array();
                     <th></th>
                 </tr>
             </thead>
+            <?php
+            foreach ($order_arr_active as $total) {
+                $order_id = $total['id'];
+            ?>
             <tbody>
                 <tr>
                     <td><?php echo $total['id'] ?? ''; ?></td>
@@ -78,8 +80,8 @@ $pickupsOrders = array();
                         <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->
                     </td>
                 </tr>
+                </tbody>
             <?php } ?>
-            </tbody>
             </table>
                 <?php
         }
