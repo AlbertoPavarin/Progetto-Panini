@@ -25,6 +25,21 @@ function getTotalPrice($cart)
     return $price;
 }
 
+function getjsonProducts($cart)
+{
+    $json = array();
+    foreach($cart as $product)
+    {
+        $formattedProd = array(
+            'ID' => '' . $product->product . '',
+            'quantity' => '' . $product->quantity . ''
+        );
+        $json[] = $formattedProd;
+    }
+    return $json;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -131,9 +146,7 @@ function getTotalPrice($cart)
                     <?php } ?>
                     <div class="d-flex justify-content-center align-items-end mt-5 pb-5">
                         <div class="order-btn-container d-flex justify-content-center align-items-center p-4">
-                            <form method="post">
-                                <input type="submit" value="Ordina" class="btnn">
-                            </form>
+                            <input type="submit" value="Ordina" class="btnn" onclick='setOrder(<?php echo $_SESSION["user_id"] . "," .getTotalPrice($cart) . "," . json_encode(getjsonProducts($cart))?>)'>
                         </div>
                     </div>
                     <?php
@@ -148,9 +161,5 @@ function getTotalPrice($cart)
         </main>
     </body>
     <?php
-        if ($_SERVER['REQEUST_METHOD'] = 'POST')
-        {
-           echo "<script>setOrder(" .$_SESSION['user_id'] . ", " . getTotalPrice($cart) .")</script>";
-        }
     ?>
 </html>
