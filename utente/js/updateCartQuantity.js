@@ -1,4 +1,4 @@
-function addItem(id, user_id)
+function addItem(id, user_id, price)
 {
     const requestOptions = {
         method: "PUT",
@@ -9,6 +9,12 @@ function addItem(id, user_id)
         }),
       };
 
+      const priceCnt = document.querySelector(`.price-${id}`);
+      let totalCurrentPrice = parseFloat(priceCnt.innerHTML);
+      totalCurrentPrice += parseFloat(price);
+
+      priceCnt.innerHTML = totalCurrentPrice.toFixed(2);
+
     fetch('http://localhost:8080/Progetto-Panini/food-api/API/cart/setAdd.php', requestOptions)
     .then((resposne) => resposne.json())
     .then((data) => console.log(data));
@@ -16,7 +22,7 @@ function addItem(id, user_id)
     document.querySelector(`#text-${id}`).innerHTML++;
 }
 
-function deleteItem(id, user_id)
+function deleteItem(id, user_id, price)
 {
     const requestOptions = {
         method: "PUT",
@@ -30,6 +36,11 @@ function deleteItem(id, user_id)
     const text = document.querySelector(`#text-${id}`);
     if (text.innerHTML > 1)
     {
+      const priceCnt = document.querySelector(`.price-${id}`);
+      let totalCurrentPrice = parseFloat(priceCnt.innerHTML);
+      totalCurrentPrice -= parseFloat(price);
+
+      priceCnt.innerHTML = totalCurrentPrice.toFixed(2);
         fetch('http://localhost:8080/Progetto-Panini/food-api/API/cart/setRemove.php', requestOptions)
         .then((response) => response.json())
         .then((data) => console.log(data));

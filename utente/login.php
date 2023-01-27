@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <p class="error-msg"><?php echo $loginErr ?></p>
                             <input type="submit" value="Accedi" class="login-submit-btn">
                             <div class="register-container col-12 mt-2">
-                                <a href="">Registrati ora</a>
+                                <a href="signup.php">Registrati ora</a>
                             </div>
                             <div class="register-container col-12 mt-2">
                                 <a href="">Password dimeticata</a>

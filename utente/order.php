@@ -70,22 +70,69 @@ $pickups = getPickups();
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center mt-4">
-                <select id="pickup-select" aria-label="Default select example" onchange=getBreakByPickup(this)>
-                        <option selected>Seleziona punto di ritiro</option>
-                        <?php
-                        foreach($pickups as $pickup)
-                        {?>
-                            <option value="<?php echo $pickup->id ?>"><?php echo $pickup->name ?></option>
-                        <?php }
-                        ?>
-                </select> 
-            </div> 
-            <div class="d-flex justify-content-center align-items-center mt-4">
-                <select id="break-select" aria-label="Default select example">
-                        <option selected>Seleziona ricreazione</option>
-                </select> 
-            </div> 
+            <div>
+                <?php
+                    if (count((array)$cart) > 0)
+                    {
+                ?>
+                <div class="d-flex justify-content-center align-items-center mt-4">
+                    <select id="pickup-select" aria-label="Default select example" onchange=getBreakByPickup(this)>
+                            <option selected>Seleziona punto di ritiro</option>
+                            <?php
+                            foreach($pickups as $pickup)
+                            {?>
+                                <option value="<?php echo $pickup->id ?>"><?php echo $pickup->name ?></option>
+                            <?php }
+                            ?>
+                    </select> 
+                </div> 
+                <div class="d-flex justify-content-center align-items-center mt-4">
+                    <select id="break-select" aria-label="Default select example">
+                            <option selected>Seleziona ricreazione</option>
+                    </select> 
+                </div> 
+                <div class="prods-container mt-5 pb-5">
+                <?php
+                    foreach ($cart as $product)
+                    {?>
+                    <div class="cart-prod-container mt-4 p-2">
+                        <div class="row cart-prod mb-3" onclick=redirect(<?php echo $product->product ?>)>
+                            <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/<?php echo getCategory($product->tag_id)[0]->name ?>-icon.png" class="icon-container"></div>
+                            <div class="col-8 d-flex align-items-center"><b><?php echo $product->name?></b></div>
+                            <div class="col-2 d-flex justify-content-center align-items-center">
+                                <div class="price-container">
+                                    <span class="p-price price-<?php echo $product->product ?>"><?php echo number_format($product->price * $product->quantity, 2, '.')?></span><span>€</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center">
+                                <div class="quantity-container d-flex justify-content-center align-items-center">
+                                    <div class="row">
+                                        <div id="minus-btn-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center" onclick=deleteItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>-</div>
+                                        <div id="text-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center"><?php echo $product->quantity ?></div>
+                                        <div id="plus-btn-<?php echo $product->product ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center" onclick=addItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>+</div>
+                                    </div>
+                                </div>
+                                <div class="delete-container d-flex justify-content-center align-items-center" onclick=deleteProduct(<?php echo $product->product . "," . $_SESSION['user_id']?>)><i class='bx bx-trash'></i></div>
+                            </div>
+                    </div>
+                    <?php } ?>
+                    <div class="d-flex justify-content-center align-items-end mt-5 pb-5">
+                        <div class="order-btn-container d-flex justify-content-center align-items-center p-4">
+                            <form action="order.php">
+                                <input type="submit" value="Ordina" class="btnn">
+                            </form>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    else
+                    {
+                        echo "<h4 class='m-3'>Nessun prodotto nel carrello</h4>";
+                    }
+                    ?>
+                </div>
+            </div>
         </main>
     </body>
 

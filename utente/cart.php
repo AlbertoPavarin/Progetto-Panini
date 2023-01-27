@@ -87,16 +87,16 @@ $cart = getCart($_SESSION['user_id']);
                             <div class="col-8 d-flex align-items-center"><b><?php echo $product->name?></b></div>
                             <div class="col-2 d-flex justify-content-center align-items-center">
                                 <div class="price-container">
-                                    <p class="p-price"><?php echo $product->price?>€</p>
+                                <span class="p-price price-<?php echo $product->product ?>"><?php echo number_format($product->price * $product->quantity, 2, '.')?></span><span>€</span>
                                 </div>
                             </div>
                         </div>
                             <div class="col-12 d-flex justify-content-center align-items-center pb-3">
                                 <div class="quantity-container d-flex justify-content-center align-items-center">
                                     <div class="row">
-                                        <div id="minus-btn-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center" onclick=deleteItem(<?php echo $product->product . "," . $_SESSION['user_id']?>)>-</div>
+                                        <div id="minus-btn-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center" onclick=deleteItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>-</div>
                                         <div id="text-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center"><?php echo $product->quantity ?></div>
-                                        <div id="plus-btn-<?php echo $product->product ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center" onclick=addItem(<?php echo $product->product . "," . $_SESSION['user_id']?>)>+</div>
+                                        <div id="plus-btn-<?php echo $product->product ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center" onclick=addItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>+</div>
                                     </div>
                                 </div>
                                 <div class="delete-container d-flex justify-content-center align-items-center" onclick=deleteProduct(<?php echo $product->product . "," . $_SESSION['user_id']?>)><i class='bx bx-trash'></i></div>
