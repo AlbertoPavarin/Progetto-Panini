@@ -14,6 +14,7 @@ $cart = getCart($_SESSION['user_id']);
 
 $pickups = getPickups();
 
+
 function getTotalPrice($cart)
 {
     $price = 0;
@@ -32,6 +33,21 @@ function getjsonProducts($cart)
     {
         $formattedProd = array(
             'ID' => '' . $product->product . '',
+            'quantity' => '' . $product->quantity . ''
+        );
+        $json[] = $formattedProd;
+    }
+    return $json;
+}
+
+function getJsonProductsForJson($cart)
+{
+    $json = array();
+    foreach($cart as $product)
+    {
+        $formattedProd = array(
+            'name' => '' . $product->name . '',
+            'price' => '' . $product->price . '',
             'quantity' => '' . $product->quantity . ''
         );
         $json[] = $formattedProd;
@@ -102,6 +118,7 @@ function getjsonProducts($cart)
                     if (count((array)$cart) > 0)
                     {
                 ?>
+                <p id="error" class="error-msg d-flex justify-content-center align-items-center"></p>
                 <div class="d-flex justify-content-center align-items-center mt-4">
                     <select id="pickup-select" aria-label="Default select example" onchange=getBreakByPickup(this)>
                             <option selected>Seleziona punto di ritiro</option>
@@ -146,7 +163,7 @@ function getjsonProducts($cart)
                     <?php } ?>
                     <div class="d-flex justify-content-center align-items-end mt-5 pb-5">
                         <div class="order-btn-container d-flex justify-content-center align-items-center p-4">
-                            <input type="submit" value="Ordina" class="btnn" onclick='setOrder(<?php echo $_SESSION["user_id"] . "," .getTotalPrice($cart) . "," . json_encode(getjsonProducts($cart))?>)'>
+                            <input type="submit" value="Ordina" class="btnn" onclick='setOrder(<?php echo $_SESSION["user_id"] . "," .getTotalPrice($cart) . "," . json_encode(getjsonProducts($cart)) . "," . json_encode(getJsonProductsForJson($cart) . "," . json_encode($cart))?>)'>
                         </div>
                     </div>
                     <?php
