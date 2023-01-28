@@ -106,7 +106,7 @@ if (isset($_GET["category_id"]))
                         <div class="col-2 d-flex justify-content-center align-items-center"><img src="static/icons/<?php echo $category->name ?>-icon.png" class="icon-container"></div>
                         <div class="col-8 d-flex align-items-center"><b><?php echo $product['name']?></b></div>
                         <div class="col-2 d-flex justify-content-center align-items-center">
-                            <div class="price-container">
+                            <div class="price-container d-flex justify-content-center align-items-center">
                                 <p class="p-price"><?php echo $product['price']?>€</p>
                             </div>
                         </div>

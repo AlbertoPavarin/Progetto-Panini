@@ -73,7 +73,7 @@ $user = checkLogin();
                 <div class="row mt-3 d-flex justify-content-center align-items-center">
                     <div class="col-4 d-flex justify-content-center align-items-center btn-profile">
                         <form action="">
-                            <input type="submit" value="Reset" class="btn" name="reset">
+                            <input type="submit" value="Reset" class="btnn" name="reset">
                         </form>
                     </div>
                     <div class="col-4"></div>
