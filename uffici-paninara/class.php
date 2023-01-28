@@ -1,3 +1,4 @@
+
 <?php
 include_once dirname(__FILE__) . '/functions/checkLogin.php';
 include_once dirname(__FILE__) . '/functions/setClass.php';
@@ -103,8 +104,14 @@ error_reporting(0);
     </div>
     <?php
     if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['c_year']!=NULL&& $_POST['c_section']!=NULL&& intval($_POST['c_year']>0&&$_POST['c_year']<=5)){
-        setClass(intval($_POST['c_year']),$_POST['c_section'],);
-        echo"<script> window.location.href = 'class.php'; </script>"; 
+        $section=$_POST['c_section'];
+        if(ctype_space($section)!=true){
+            setClass(intval($_POST['c_year']),$_POST['c_section']);
+            echo"<script> window.location.href = 'class.php'; </script>"; 
+        }else{
+            echo "<script>alert('errore: campi incompleti');</script>"; 
+            echo"<script> window.location.href = 'class.php'; </script>"; 
+        }
     }
     ?> 
         <script>

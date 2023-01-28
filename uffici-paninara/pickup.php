@@ -100,8 +100,14 @@ error_reporting(0);
     </div>
     <?php
     if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['pk_name']!=NULL){
-        setPickup($_POST['pk_name']);
-        echo"<script> window.location.href = 'pickup.php'; </script>"; 
+        $pickup=$_POST['pk_name'];
+        if(ctype_space($pickup)!=true){
+            setPickup($_POST['pk_name']);
+            echo"<script> window.location.href = 'pickup.php'; </script>";  
+        }else{
+            echo "<script>alert('errore: campi incompleti');</script>"; 
+            echo"<script> window.location.href = 'pickup.php'; </script>";  
+        }
     }
     ?>    
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

@@ -163,18 +163,38 @@ $ingr_id=0;
     </table>
 
     <?php
-    if($id=='NEW' && $_SERVER['REQUEST_METHOD']=='POST' && $_POST['ingr_name']!=NULL && $_POST['ingr_price']!=NULL && $_POST['ingr_descr']!=NULL && $_POST['ingr_quantity']!=NULL){
-        setIngredient($_POST['ingr_name'],$_POST['ingr_descr'],floatval($_POST['ingr_price']),intval($_POST['ingr_extra']),intval($_POST['ingr_quantity']));
-        echo "<script>alert('prodotto creato');</script>"; 
-        echo"<script> window.location.href = 'ingredient.php?INGREDIENT_ID=0'; </script>"; 
-    }else if($id=='NEW' && $_SERVER['REQUEST_METHOD']=='POST' && ($_POST['ingr_name']==NULL || $_POST['ingr_price']==NULL || $_POST['ingr_descr']===NULL || $_POST['ingr_quantity']==NULL)){
-        echo "<script>alert('errore nell'inserimento dei campi');</script>"; 
-        echo"<script> window.location.href = 'ingredient.php?INGREDIENT_ID=0'; </script>"; 
+
+    if($id=='NEW' && $_SERVER['REQUEST_METHOD']=='POST'){
+        $name=$_POST['ingr_name'];
+        $descr=$_POST['ingr_descr'];    
+        if($_POST['ingr_name']!=NULL   && $_POST['ingr_price']!=NULL && $_POST['ingr_descr']!=NULL && $_POST['ingr_quantity']!=NULL){
+            if(ctype_space($name)!=true && ctype_space($descr)!=true ){
+                setIngredient($_POST['ingr_name'],$_POST['ingr_descr'],floatval($_POST['ingr_price']),intval($_POST['ingr_extra']),intval($_POST['ingr_quantity']));
+                echo "<script>alert('ingrediente creato');</script>"; 
+                echo"<script> window.location.href = 'ingredient.php?INGREDIENT_ID=0'; </script>";     
+            }else if ($_POST['ingr_name']==NULL || ctype_space($name)==true || $_POST['ingr_price']==NULL || $_POST['ingr_descr']==NULL || ctype_space($descr)==true  || $_POST['ingr_quantity']==NULL){
+                echo "<script>alert('errore: campi incompleti');</script>"; 
+                echo"<script> window.location.href = 'ingredient.php?INGREDIENT_ID=0'; </script>"; 
+            }
+            
+        }
     }
 
-    if($id!='NEW' && $id!='0' && $_SERVER['REQUEST_METHOD']=='POST' && $_POST['updIngr_name']!=NULL && $_POST['updIngr_price']!=NULL && $_POST['updIngr_descr']!=NULL && $_POST['updIngr_quantity']!=NULL){
-        updateIngredient($id, $_POST['updIngr_name'], $_POST['updIngr_descr'], floatval($_POST['updIngr_price']), intval($_POST['updIngr_extra']), intval($_POST['updIngr_quantity']));
-        echo"<script> window.location.href = 'ingredient.php?INGREDIENT_ID=0'; </script>"; 
+
+    if($id!='NEW' && $id!='0' && $_SERVER['REQUEST_METHOD']=='POST'){ 
+        $name=$_POST['updIngr_name'];
+        $descr=$_POST['updIngr_descr'];
+        if($_POST['updIngr_name']!=NULL  && $_POST['updIngr_price']!=NULL && $_POST['updIngr_descr']!=NULL  && $_POST['updIngr_quantity']!=NULL){
+            if(ctype_space($name)!=true  && ctype_space($descr)!=true){
+                updateIngredient($id, $_POST['updIngr_name'], $_POST['updIngr_descr'], floatval($_POST['updIngr_price']), intval($_POST['updIngr_extra']), intval($_POST['updIngr_quantity']));
+                echo "<script>alert('ingrediente aggiornato');</script>"; 
+                echo"<script> window.location.href = 'ingredient.php?INGREDIENT_ID=0'; </script>";     
+            }else if($_POST['updIngr_name']==NULL || ctype_space($name)==true || $_POST['updIngr_price']==NULL || $_POST['updIngr_descr']==NULL || ctype_space($descr)==true  || $_POST['updIngr_quantity']==NULL){
+                echo 1;
+                echo "<script>alert('errore: campi incompleti');</script>"; 
+                echo"<script> window.location.href = 'ingredient.php?INGREDIENT_ID=0'; </script>";
+            }
+        }
     }
     ?>    
     <script>

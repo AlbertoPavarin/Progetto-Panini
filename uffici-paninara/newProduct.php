@@ -63,32 +63,32 @@ $user = checkLogin();
                 <h2 class="title-newProd bord_bottom_solid">crea un nuovo prodotto</h2>
                 <form class="" action="" method="post">
                     <div class="label-bgcolor"><label for="text">informazioni prodotto</label></div>
-                    <div><label class="required-field-lbl" for="text">iserisci nome</label></div>
+                    <div><label class="required-field-lbl" for="text">inserisci nome</label></div>
                     <div><input type="text" name="prod_name" value=""></div>
-                    <div><label class="required-field-lbl" for="text">iserisci prezzo (senza valuta)</label></div>
-                    <div><input type="text" name="prod_price" value=""></div>
-                    <div><label class="required-field-lbl" for="text">iserisci descrizione</label></div>
+                    <div><label class="required-field-lbl" for="text">inserisci prezzo (senza valuta)</label></div>
+                    <div><input type="text" name="prod_price" onkeypress="return isNumber(event)" value=""></div>
+                    <div><label class="required-field-lbl" for="text">inserisci descrizione</label></div>
                     <div><input type="text" name="prod_description" value=""></div>
-                    <div><label class="required-field-lbl" for="text">iserisci quantità</label></div>
-                    <div><input type="text" name="prod_quantity" value=""></div>
+                    <div><label class="required-field-lbl" for="text">inserisci quantità</label></div>
+                    <div><input type="text" name="prod_quantity" onkeypress="return isNumber(event)" value=""></div>
 
                     <div class="label-bgcolor label-margin-top"><label for="text">valori nutrizionali (in grammi)</label></div>
-                    <div><label class="required-field-lbl" for="text">iserisci kcal</label></div>
-                    <div><input type="text" name="nv_kcal" value=""></div>
-                    <div><label class="required-field-lbl" for="text">iserisci grassi</label></div>
-                    <div><input type="text" name="nv_fats" value=""></div>
+                    <div><label class="required-field-lbl" for="text">inserisci kcal</label></div>
+                    <div><input type="text" name="nv_kcal" onkeypress="return isNumber(event)" value=""></div>
+                    <div><label class="required-field-lbl" for="text">inserisci grassi</label></div>
+                    <div><input type="text" name="nv_fats" onkeypress="return isNumber(event)" value=""></div>
                     <div><label class="required-field-lbl" for="text">inserisci grassi saturi</label></div>
-                    <div><input type="text" name="nv_saturated_fats" value=""></div>
+                    <div><input type="text" name="nv_saturated_fats" onkeypress="return isNumber(event)" value=""></div>
                     <div><label class="required-field-lbl" for="text">inserisci carboidrati</label></div>
-                    <div><input type="text" name="nv_carbohydrates" value=""></div>
+                    <div><input type="text" name="nv_carbohydrates" onkeypress="return isNumber(event)" value=""></div>
                     <div><label class="required-field-lbl" for="text">iserisci zucchero</label></div>
-                    <div><input type="text" name="nv_sugars" value=""></div>
+                    <div><input type="text" name="nv_sugars" onkeypress="return isNumber(event)" value=""></div>
                     <div><label class="required-field-lbl" for="text">inserisci proteine</label></div>
-                    <div><input type="text" name="nv_proteins" value=""></div>
+                    <div><input type="text" name="nv_proteins" onkeypress="return isNumber(event)" value=""></div>
                     <div><label class="required-field-lbl" for="text">inserisci fibre</label></div>
-                    <div><input type="text" name="nv_fiber" value=""></div>
+                    <div><input type="text" name="nv_fiber" onkeypress="return isNumber(event)" value=""></div>
                     <div><label class="required-field-lbl" for="text">inserisci sale</label></div>
-                    <div><input type="text" name="nv_salt" value=""></div>
+                    <div><input type="text" name="nv_salt" onkeypress="return isNumber(event)" value=""></div>
 
                     <div class="label-bgcolor label-margin-top"><label for="text">ingredieti</label></div>
                     <?php 
@@ -127,6 +127,16 @@ $user = checkLogin();
                 }
                 ?>
             </div>
+            <script>
+                function isNumber(evt) {
+                    evt = (evt) ? evt : window.event;
+                    var charCode = (evt.which) ? evt.which : evt.keyCode;
+                    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>
