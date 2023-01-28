@@ -20,7 +20,7 @@ $cart = getCart($_SESSION['user_id']);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-        <title>Categoria</title>
+        <title>Carrello</title>
         <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body>
@@ -94,9 +94,9 @@ $cart = getCart($_SESSION['user_id']);
                             <div class="col-12 d-flex justify-content-center align-items-center pb-3">
                                 <div class="quantity-container d-flex justify-content-center align-items-center">
                                     <div class="row">
-                                        <div id="minus-btn-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center" onclick=deleteItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>-</div>
+                                        <div id="minus-btn-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center minus" onclick=deleteItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>-</div>
                                         <div id="text-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center"><?php echo $product->quantity ?></div>
-                                        <div id="plus-btn-<?php echo $product->product ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center" onclick=addItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>+</div>
+                                        <div id="plus-btn-<?php echo $product->product ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center plus" onclick=addItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>+</div>
                                     </div>
                                 </div>
                                 <div class="delete-container d-flex justify-content-center align-items-center" onclick=deleteProduct(<?php echo $product->product . "," . $_SESSION['user_id']?>)><i class='bx bx-trash'></i></div>

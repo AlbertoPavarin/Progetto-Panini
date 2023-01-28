@@ -92,9 +92,9 @@ function concatenateProduct($id)
                                 <div class="col-12 d-flex justify-content-center align-items-center pb-3">
                                     <div class="quantity-container d-flex justify-content-center align-items-center">
                                         <div class="row">
-                                            <div id="minus-btn-<?php echo $product['id'] ?>" class="col-4 d-flex justify-content-center align-items-center" onclick=deleteItem(<?php echo $product['id']?>)>-</div>
+                                            <div id="minus-btn-<?php echo $product['id'] ?>" class="col-4 d-flex justify-content-center align-items-center minus" onclick=deleteItem(<?php echo $product['id']?>)>-</div>
                                             <div id="text-<?php echo $product['id'] ?>" class="col-4 d-flex justify-content-center align-items-center">1</div>
-                                            <div id="plus-btn-<?php echo $product['id'] ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center" onclick=addItem(<?php echo $product['id']?>)>+</div>
+                                            <div id="plus-btn-<?php echo $product['id'] ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center plus" onclick=addItem(<?php echo $product['id']?>)>+</div>
                                         </div>
                                     </div>
                                 </div>

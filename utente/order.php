@@ -152,9 +152,9 @@ function getJsonProductsForJson($cart)
                         <div class="col-12 d-flex justify-content-center">
                                 <div class="quantity-container d-flex justify-content-center align-items-center">
                                     <div class="row">
-                                        <div id="minus-btn-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center" onclick=deleteItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>-</div>
+                                        <div id="minus-btn-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items- minus" onclick=deleteItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>-</div>
                                         <div id="text-<?php echo $product->product ?>" class="col-4 d-flex justify-content-center align-items-center"><?php echo $product->quantity ?></div>
-                                        <div id="plus-btn-<?php echo $product->product ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center" onclick=addItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>+</div>
+                                        <div id="plus-btn-<?php echo $product->product ?>" class="col-4 pr-2 d-flex justify-content-center align-items-center plus" onclick=addItem(<?php echo $product->product . "," . $_SESSION['user_id'] . "," . $product->price?>)>+</div>
                                     </div>
                                 </div>
                                 <div class="delete-container d-flex justify-content-center align-items-center" onclick=deleteProduct(<?php echo $product->product . "," . $_SESSION['user_id']?>)><i class='bx bx-trash'></i></div>

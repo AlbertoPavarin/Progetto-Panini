@@ -32,6 +32,6 @@ function addToCart(id, user_id)
           .then((response) => response.json())
           .then((data) => console.log(data));
 
-          alert('Ordinato');
+          alert('Aggiunto al carrello');
     }
 }

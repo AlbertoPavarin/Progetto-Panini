@@ -776,3 +776,7 @@ html, body{
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 22px;
 }
+
+.minus:hover, .plus:hover, .order-btn-container:hover, .delete-container:hover, .circle-button:hover, .cart-prod:hover{
+  cursor:pointer;
+}
