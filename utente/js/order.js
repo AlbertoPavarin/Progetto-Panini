@@ -43,6 +43,7 @@ function setOrder(user_id, price, products, productOnJson)
             .then((data) => {
             })
         });
+        console.log(data);
         alert('ordinato');
         location.href = "index.php";
       })
