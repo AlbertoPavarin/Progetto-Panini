@@ -26,12 +26,16 @@ function checkField(){
     $return=0;
 if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['prod_name']!=NULL && $_POST['prod_price']!=NULL && $_POST['prod_quantity']!=NULL && $_POST['prod_description']!=NULL)
 {    
-    if(floatval($_POST['prod_price'])==0){
-        $return= "<script>alert('errore nell'inserimento del prezzo');</script>";
+    $name=$_POST['prod_name'];
+    $descr=$_POST['prod_descriprion'];    
+    if(ctype_space($name)!=true && ctype_space($descr)!=true){
+        echo "<script>alert('errore');</script>";
+    }else if(floatval($_POST['prod_price'])==0){
+        echo "<script>alert('errore nell'inserimento del prezzo');</script>";
 
     }else if(floatval($_POST['prod_quantity'])==0){
 
-        $return= "<script>alert('errore nell'inserimento della quantità');</script>";
+        echo "<script>alert('errore nell'inserimento della quantità');</script>";
         
     }else{
         $product_OK=true;

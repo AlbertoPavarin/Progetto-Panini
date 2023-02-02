@@ -11,11 +11,12 @@ function getArchiveProduct()
     $product=array();
     foreach ($product_data as $prod) {
       $product_record= array(
-        'id' => $prod["ID"],
-        'name' => $prod["Nome prodotto"],
-        'price' => $prod["Prezzo"],
+        'id' => $prod["id"],
+        'name' => $prod["name"],
+        'price' => $prod["price"],
         'tag' => $prod["Tag"],
         'quantity' => $prod['quantity'],
+        'description' =>$prod["description"],
         'active' =>$prod["active"],
     );
   array_push($product,$product_record);
