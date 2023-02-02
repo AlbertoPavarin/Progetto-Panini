@@ -5,10 +5,16 @@ include_once dirname(__FILE__) . '/functions/getArchiveProductByTag.php';
 include_once dirname(__FILE__) . '/functions/getProduct.php';
 include_once dirname(__FILE__) . '/functions/getCategory.php';
 include_once dirname(__FILE__) . '/functions/getCart.php';
+include_once dirname(__FILE__) . '/functions/getCartItemsLike.php';
 
 $user = checkLogin();
 
 $cart = getCart($_SESSION['user_id']);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{  
+    $cart = getCartItemsLike($_SESSION['user_id'], $_POST['prod']);
+}
 
 ?>
 
@@ -68,7 +74,7 @@ $cart = getCart($_SESSION['user_id']);
                     <div class="col-12">
                         <form action="" method="post" class="mt-5">
                             <div class="form-group">
-                                <input type="text" class="searchbar form-control">
+                                <input type="text" class="searchbar form-control" name="prod">
                             </div>
                         </form>
                     </div>
