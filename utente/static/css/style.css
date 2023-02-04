@@ -780,3 +780,7 @@ html, body{
 .minus:hover, .plus:hover, .order-btn-container:hover, .delete-container:hover, .circle-button:hover, .cart-prod:hover{
   cursor:pointer;
 }
+
+.p-orders{
+  font-size: 15px;
+}
