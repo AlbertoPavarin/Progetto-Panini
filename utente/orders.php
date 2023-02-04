@@ -70,7 +70,7 @@ $orders = getArchiveUserOrders($_SESSION["user_id"]);
                 <?php
                 foreach($orders as $order)
                 {?>
-                <a href="">
+                <a href="singleOrder.php">
                     <div class="row prod-container mb-3">
                         <div class="col-3 d-flex justify-content-center align-items-center">
                             <span><?php echo "<b>Ordine N°</b>" . $order->id ?></span>
