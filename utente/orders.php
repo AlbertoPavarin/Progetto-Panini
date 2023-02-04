@@ -8,7 +8,7 @@ include_once dirname(__FILE__) . '/functions/getBreak.php';
 
 $user = checkLogin();
 
-$orders = getArchiveUserOrders($_SESSION["user_id"]);
+$orders = array_reverse(getArchiveUserOrders($_SESSION["user_id"]));
 
 ?>
 
@@ -70,7 +70,7 @@ $orders = getArchiveUserOrders($_SESSION["user_id"]);
                 <?php
                 foreach($orders as $order)
                 {?>
-                <a href="singleOrder.php">
+                <a href="singleOrder.php?order=<?php echo $order->id ?>">
                     <div class="row prod-container mb-3">
                         <div class="col-3 d-flex justify-content-center align-items-center">
                             <span><?php echo "<b>Ordine N°</b>" . $order->id ?></span>
