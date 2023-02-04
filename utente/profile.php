@@ -76,7 +76,11 @@ $user = checkLogin();
                             <input type="submit" value="Reset" class="btnn" name="reset">
                         </form>
                     </div>
-                    <div class="col-4"></div>
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <form action="orders.php" class="btn-profile p-3 d-flex justify-content-center align-items-center">
+                            <input type="submit" class="btnn" value="Ordini" name="esci">
+                        </form>
+                    </div>
                     <div class="col-4 d-flex justify-content-center align-items-center btn-profile">
                         <form action="functions/logout.php">
                             <input type="submit" class="btnn" value="Esci" name="esci">
