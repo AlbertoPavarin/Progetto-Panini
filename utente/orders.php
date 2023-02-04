@@ -4,13 +4,11 @@ session_start();
 include_once dirname(__FILE__) . '/functions/checkLogin.php';
 include_once dirname(__FILE__) . '/functions/getArchiveUserOrders.php';
 include_once dirname(__FILE__) . '/functions/getPickup.php';
-include_once dirname(__FILE__) . '/functions/getArchiveUserOrders.php';
+include_once dirname(__FILE__) . '/functions/getBreak.php';
 
 $user = checkLogin();
 
 $orders = getArchiveUserOrders($_SESSION["user_id"]);
-
-var_dump($orders[12]);
 
 ?>
 
@@ -75,10 +73,13 @@ var_dump($orders[12]);
                 <a href="">
                     <div class="row prod-container mb-3">
                         <div class="col-3 d-flex justify-content-center align-items-center">
-                            <?php echo "Ordine N°" . $order->id ?>
+                            <span><?php echo "<b>Ordine N°</b>" . $order->id ?></span>
                         </div>
-                        <div class="col-3">
-                           <p class="b-orders">Ritiro:</p> <?php echo(getPickup($order->pickup))[0]->name ?>
+                        <div class="col-5 d-flex justify-content-center align-items-center">
+                            <span class="mb-0"><b>Ritiro:</b> <?php echo(getPickup($order->pickup))[0]->name ?></span> 
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center">
+                            <span class="mb-0"><b>Ricreazione:</b> <?php echo(getBreak($order->break))[0]->time ?></span>
                         </div>
                     </div>
                 </a>
