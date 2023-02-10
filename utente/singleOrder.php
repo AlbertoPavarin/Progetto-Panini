@@ -73,7 +73,7 @@ function getjsonProducts($products)
                             </a>
                         </li>
                         <li class="nav__item pt-2">
-                            <a href="" class="nav__link">
+                            <a href="cart.php" class="nav__link">
                                 <i class='bx bx-cart nav__icon'></i>
                                 <span class="nav__name">Carrello</span>
                             </a>

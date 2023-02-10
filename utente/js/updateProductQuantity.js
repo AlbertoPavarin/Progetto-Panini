@@ -29,9 +29,16 @@ function addToCart(id, user_id)
           };
 
           fetch('http://localhost:8080/Progetto-Panini/food-api/API/cart/setAddItem.php', requestOptions)
-          .then((response) => response.json())
-          .then((data) => console.log(data));
-
-          alert('Aggiunto al carrello');
+          .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.data);
+          })
+          .then((data) => {
+            console.log(data);
+            alert('Aggiunto al carrello');
+        })
+        .catch((e) => alert('Prodotto già nel carrello'));
     }
 }
