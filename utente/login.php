@@ -15,6 +15,7 @@ $err = "";
 $loginErr = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    var_dump(hash("sha256", $_POST['password']));
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $data = [
       "email" => $_POST['email'],

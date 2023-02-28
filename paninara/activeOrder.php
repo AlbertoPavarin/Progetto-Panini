@@ -62,7 +62,7 @@ $order_arr_active = getActiveOrder();
                     <td><?php echo getPickup($total['pickup'])[0]->name ?? ''; ?></td>
                     <td><?php echo getBreak($total['break'])[0]->time ?? ''; ?></td>
                     <td>
-                        <a href="http://localhost:8080/Progetto-Panini/paninara/singleOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
+                        <a href="https://localhost/Progetto-Panini/paninara/singleOrder.php?ORDER_ID=<?php echo $order_id; ?>">visualizza</a>
                         <!--<a href="http://localhost/progetti_PHP/Progetto-Panini/paninara/activeOrder.php?ORDER_ID=<?/*php echo $order_id;*/?>">visualizza</a>-->
                     </td>
                 </tr>

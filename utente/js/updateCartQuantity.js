@@ -17,7 +17,7 @@ function addItem(id, user_id, price)
 
       priceCnt.innerHTML = totalCurrentPrice.toFixed(2);
 
-    fetch('http://localhost:8080/Progetto-Panini/food-api/API/cart/setAdd.php', requestOptions)
+    fetch('https://localhost/Progetto-Panini/food-api/API/cart/setAdd.php', requestOptions)
     .then((resposne) => resposne.json())
     .then((data) => console.log(data));
 
@@ -43,7 +43,7 @@ function deleteItem(id, user_id, price)
       totalCurrentPrice -= parseFloat(price);
 
       priceCnt.innerHTML = totalCurrentPrice.toFixed(2);
-        fetch('http://localhost:8080/Progetto-Panini/food-api/API/cart/setRemove.php', requestOptions)
+        fetch('https://localhost/Progetto-Panini/food-api/API/cart/setRemove.php', requestOptions)
         .then((response) => response.json())
         .then((data) => console.log(data));
 
@@ -66,7 +66,7 @@ function deleteProduct(id, user_id)
     }),
   };
 
-  fetch(`http://localhost:8080/Progetto-Panini/food-api/API/cart/deleteItem.php?user=${user_id}&product=${id}`)
+  fetch(`https://localhost/Progetto-Panini/food-api/API/cart/deleteItem.php?user=${user_id}&product=${id}`)
   .then((response) => response.json())
   .then((data) => console.log(data));
   location.reload();

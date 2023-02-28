@@ -28,7 +28,7 @@ function setOrder(user_id, price, products, productOnJson)
         body: JSON.stringify(JSON.parse(json)),
       };
 
-      fetch('http://localhost:8080/Progetto-Panini/food-api/API/order/setOrder.php', requestOptions)
+      fetch('https://localhost/Progetto-Panini/food-api/API/order/setOrder.php', requestOptions)
       .then((response) => {
         if (response.ok) {
             return response.json();
@@ -38,7 +38,7 @@ function setOrder(user_id, price, products, productOnJson)
       .then((data) => {
         products.forEach(product => {
             console.log(product);
-            fetch(`http://localhost:8080/Progetto-Panini/food-api/API/cart/deleteItem.php?user=${user_id}&product=${product['ID']}`)
+            fetch(`https://localhost/Progetto-Panini/food-api/API/cart/deleteItem.php?user=${user_id}&product=${product['ID']}`)
             .then((response) => response.json())
             .then((data) => {
             })

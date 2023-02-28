@@ -72,7 +72,6 @@ function concatenateProduct($id)
             </nav>
         </header>
         <main class="pb-5">
-                <div class="d-flex justify-content-center align-items-end prod-c">
                 <div class="">
                     <!--<img src="static/img/<?php //echo $product['tag'] ?>panini.jpeg" alt="" class="prod-img-container d-flex justify-content-center align-items-end">-->
                 </div>
@@ -104,7 +103,6 @@ function concatenateProduct($id)
                             </div>
                         </div>
                     </div>
-                </div>
         </main>
     </body>
 

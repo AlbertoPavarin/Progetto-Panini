@@ -2,7 +2,7 @@
 
 function getArchiveProduct()
 {
-   // $url = 'http://localhost:8080/Progetto-Panini/food-api/API/product/getArchiveProducts.php';
+   // $url = 'https://localhost/Progetto-Panini/food-api/API/product/getArchiveProducts.php';
     $url = 'http://localhost/progetti_PHP/Progetto-Panini/food-api/API/product/getArchiveProducts.php';
     $json_data = file_get_contents($url);
 

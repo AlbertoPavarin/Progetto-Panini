@@ -25,7 +25,7 @@ function setOrder(user_id, price, products, productOnJson, breakValue, pickupVal
         body: JSON.stringify(JSON.parse(json)),
       };
 
-      fetch('http://localhost:8080/Progetto-Panini/food-api/API/order/setOrder.php', requestOptions)
+      fetch('https://localhost/Progetto-Panini/food-api/API/order/setOrder.php', requestOptions)
       .then((response) => {
         if (response.ok) {
             return response.json();

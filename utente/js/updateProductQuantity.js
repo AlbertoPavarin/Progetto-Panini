@@ -28,7 +28,7 @@ function addToCart(id, user_id)
             }),
           };
 
-          fetch('http://localhost:8080/Progetto-Panini/food-api/API/cart/setAddItem.php', requestOptions)
+          fetch('https://localhost/Progetto-Panini/food-api/API/cart/setAddItem.php', requestOptions)
           .then((response) => {
             if (response.ok) {
                 return response.json();

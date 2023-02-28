@@ -2,7 +2,7 @@
 
 function getActiveOrder()
 {
-  //$url = 'http://localhost:8080/Progetto-Panini/food-api/API/order/getArchiveOrderStatus.php?STATUS_ID=1';
+  //$url = 'https://localhost/Progetto-Panini/food-api/API/order/getArchiveOrderStatus.php?STATUS_ID=1';
   $url = 'http://localhost/progetti_PHP/Progetto-Panini/food-api/API/order/getArchiveOrderStatus.php?STATUS_ID=1';
 
   if (@file_get_contents($url) === false) {

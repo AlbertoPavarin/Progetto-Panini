@@ -98,7 +98,7 @@ $quantity=0;
                     <td><?php echo $total['quantity'] ?? ''; ?></td>
                     <td><?php if($total['active']==1){echo "attivo";}else{echo "non attivo";} ?></td>
                     <td>
-                        <!--<a href="http://localhost:8080/Progetto-Panini/paninara/warehouse.php?PRODUCT_ID=<?/*php echo $prod_id;*/ ?>">visualizza</a>-->
+                        <!--<a href="https://localhost/Progetto-Panini/paninara/warehouse.php?PRODUCT_ID=<?/*php echo $prod_id;*/ ?>">visualizza</a>-->
                         <a href="http://localhost/progetti_PHP/Progetto-Panini/uffici-paninara/warehouse.php?PRODUCT_ID=<?php echo $prod_id;?>">visualizza</a>
                     </td>
                 </tr>

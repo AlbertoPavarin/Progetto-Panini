@@ -2,9 +2,16 @@
 
 function getProduct($id)
 {
-    $url = 'http://localhost:8080/Progetto-Panini/food-api/API/product/getProduct.php?PRODUCT_ID='.$id;
+  $arrContextOptions=array(
+        "ssl"=>array(
+              "verify_peer"=>false,
+              "verify_peer_name"=>false,
+          ),
+      ); 
+    $url = 'https://localhost/Progetto-Panini/food-api/API/product/getProduct.php?PRODUCT_ID='.$id;
     //$url = 'http://localhost/progetti_PHP/Progetto-Panini/food-api/API/product/getProduct.php?PRODUCT_ID='.$id;
-    $json_data = file_get_contents($url);
+    file_get_contents($url, false, stream_context_create($arrContextOptions));
+    $json_data =     file_get_contents($url, false, stream_context_create($arrContextOptions));
 
     $decode_data = json_decode($json_data, $assoc=true);
     $product_data = $decode_data;
